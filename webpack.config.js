@@ -1,0 +1,61 @@
+const path = require("path");
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const argv = process.argv;
+
+const mode = argv.find((arg, i) => {
+    const prev = argv[i - 1];
+
+    if( prev !== "--mode" ) return false;
+
+    return arg;
+});
+
+const isProduction = mode === "production" ? true : false;
+
+module.exports = {
+    mode,
+    entry: "./src/index.tsx",
+    output: {
+        path: path.resolve(__dirname, "./build"),
+        filename: "[contenthash].js"
+    },
+    optimization: {
+        splitChunks: { chunks: "all" }
+    },
+    module: {
+        rules: [
+            {
+                test: [/\.js$/, /\.jsx$/],
+                exclude: /node_modules/,
+                use: "babel-loader",
+            },
+            {
+                test: [/\.ts$/, /.tsx$/],
+                exclude: /node_modules/,
+                use: "ts-loader"
+            },
+            {
+                test: /.css$/,
+                loaders: ["style-loader", "css-loader"]
+            },
+            {
+                test: /.(jpe?g|png|gif|svg)$/i,
+                loader: "file-loader"
+            }
+        ]
+    },
+    resolve: {
+        plugins: [
+            new TsconfigPathsPlugin({ configFile: "./tsconfig.json" }),
+        ],
+        extensions: [ ".tsx", ".ts", ".jsx", ".js" ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({ 
+            template: path.join(__dirname, "./src/public/index.html"),
+            minify: isProduction,
+        }),
+    ],
+}
