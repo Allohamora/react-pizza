@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useCounter } from 'useCounter';
 
 interface CounterProps {
 
 };
 
 export const Counter: React.FC<CounterProps> = props => {
-    const [count, setCount] = useState(0);
-
-    const addHanlder = () => setCount(count + 1);
-    const removeHandler = () => setCount(count - 1);
+    const { count, increment, decrement, asyncIncrement } = useCounter();
 
     return (
         <div>
-            <div>Counter: {count}</div>
-            <button className="add" onClick={addHanlder} >Add</button>
-            <button className="remove" onClick={removeHandler} >Remove</button>
+            <div className="count" >Counter: {count}</div>
+            <button className="increment" onClick={increment} >increment</button>
+            <button className="decrement" onClick={decrement} >decrement</button>
+            <button className="asyncIncrement" onClick={asyncIncrement} >asyncIncrement</button>
         </div>
     );
 };
