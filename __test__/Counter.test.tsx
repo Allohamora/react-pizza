@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { Counter } from "../src/Counter";
+import { Counter } from "Counter";
 import { delay } from "./helpers";
 
 const countText = (count: number) => `Counter: ${count}`;

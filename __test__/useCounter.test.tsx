@@ -1,13 +1,13 @@
 import { renderHook, act } from "@testing-library/react-hooks";
-import { useCounter } from "../src/useCounter";
-import { delay } from "./helpers";
+import { useCounter } from "useCounter";
 
 describe("useCounter", () => {
-    let { result } = renderHook(() => useCounter());
+    let { result, waitForNextUpdate } = renderHook(() => useCounter());
 
     beforeEach(() => {
         const render = renderHook(() => useCounter());
         result = render.result;
+        waitForNextUpdate = render.waitForNextUpdate;
     })
 
     it("counter increment", () => {
@@ -33,10 +33,11 @@ describe("useCounter", () => {
     it("counter asyncIncrement", async () => {
         expect(result.current.count).toEqual(0);
 
-        await act(async () => {
+        act(() => {
             result.current.asyncIncrement();
-            await delay(1000);
         });
+
+        await waitForNextUpdate();
 
         expect(result.current.count).toEqual(1);
     })
