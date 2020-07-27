@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -11,6 +12,8 @@ const mode = argv.find((arg, i) => {
 
     return arg;
 });
+
+fs.rmdirSync(path.join(__dirname, "./build"), { recursive: true });
 
 const isProduction = mode === "production" ? true : false;
 

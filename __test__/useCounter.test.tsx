@@ -2,10 +2,13 @@ import { renderHook, act } from "@testing-library/react-hooks";
 import { useCounter } from "useCounter";
 
 describe("useCounter", () => {
-    let { result, waitForNextUpdate } = renderHook(() => useCounter());
+    const renderCounter = () => renderHook(() => useCounter());
+
+    let { result, waitForNextUpdate } = renderCounter();
 
     beforeEach(() => {
-        const render = renderHook(() => useCounter());
+        const render = renderCounter();
+        
         result = render.result;
         waitForNextUpdate = render.waitForNextUpdate;
     })

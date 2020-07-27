@@ -3,14 +3,18 @@
   "private": "true",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server",
-    "test": "jest --watch"
+    "start": "webpack-dev-server",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "https://github.com/Allohamora",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
     "styled-components": "^5.1.1",
     "typescript": "^3.9.7"
   },
@@ -24,6 +28,7 @@
     "@types/jest": "^26.0.7",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
+    "@types/react-redux": "^7.1.9",
     "@types/styled-components": "^5.1.1",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.6.0",

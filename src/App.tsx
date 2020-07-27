@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ReduxCounter } from 'ReduxCounter';
 
 interface AppProps {
 
@@ -12,7 +13,7 @@ const Container = styled.div`
 export const App: React.FC<AppProps> = props => {
     return (
         <Container>
-            App
+            <ReduxCounter />
         </Container>
     );
 };
