@@ -1,9 +1,7 @@
 import React from 'react';
 import { useReduxCounter } from 'useReduxCounter';
 
-interface ReduxCounterProps {
-
-};
+interface ReduxCounterProps {};
 
 export const ReduxCounter: React.FC<ReduxCounterProps> = props => {
 

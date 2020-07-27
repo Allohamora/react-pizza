@@ -1,9 +1,7 @@
 import React from 'react';
 import { useCounter } from 'useCounter';
 
-interface CounterProps {
-
-};
+interface CounterProps {};
 
 export const Counter: React.FC<CounterProps> = props => {
     const { count, increment, decrement, asyncIncrement } = useCounter();

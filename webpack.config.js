@@ -45,7 +45,10 @@ module.exports = {
             },
             {
                 test: /.(jpe?g|png|gif|svg)$/i,
-                loader: "file-loader"
+                loader: "file-loader",
+                options: {
+                    name: "assests/[name].[ext]"
+                }
             }
         ]
     },
@@ -57,7 +60,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({ 
-            template: path.join(__dirname, "./src/public/index.html"),
+            template: path.join(__dirname, "./public/index.html"),
             minify: isProduction,
         }),
     ],
