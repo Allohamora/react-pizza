@@ -13,6 +13,15 @@ const Inner = styled.div`
     justify-content: space-between;
 
     padding: 50px 0;
+
+    @media(max-width: 635px) {
+        flex-flow: column wrap;
+
+        & a[href="/cart"] {
+            padding-top: 10px;
+            align-self: flex-end;
+        }
+    }
 `;
 
 const Wrap = styled.div`

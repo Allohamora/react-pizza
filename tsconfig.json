@@ -4,6 +4,7 @@
         "target": "es5",
         "jsx": "react",
         "baseUrl": "./src",
+        "resolveJsonModule": true,
         "allowJs": true,
         "esModuleInterop": true,
         "noImplicitAny": true

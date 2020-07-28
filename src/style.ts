@@ -6,6 +6,11 @@ const { white, orange, black } = {
     black: "#000000",
 }
 
+export const breakpoints = {
+    lg: "1220px",
+    md: "600px",
+}
+
 export const theme = {
     wrap: {
         bg: "#FFDF8C",

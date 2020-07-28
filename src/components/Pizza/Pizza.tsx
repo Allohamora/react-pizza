@@ -17,6 +17,10 @@ interface PizzaProps {
     pizza: Pizza,
 };
 
+export const PizzaContainer = styled.div`
+    width: 280px;
+`;
+
 const Img = styled.img`
     width: 260px;
     height: 260px;
@@ -108,10 +112,10 @@ export const Pizza: React.FC<PizzaProps> = ({ pizza }) => {
     const { imageUrl, name, types, sizes, price } = pizza;
 
     const [activeSize, setActiveSize] = useState(sizes[0]);
-    const [activeType, setActiveType] = useState(0);
+    const [activeType, setActiveType] = useState(types[0]);
 
     return (
-        <div style={{ width: 280 }} >
+        <PizzaContainer >
             <Img src={imageUrl} alt={name} />
             <Title>{name}</Title>
 
@@ -148,6 +152,6 @@ export const Pizza: React.FC<PizzaProps> = ({ pizza }) => {
                 </Button>
             </Footer>
 
-        </div>
+        </PizzaContainer>
     );
 };

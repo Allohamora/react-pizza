@@ -3,12 +3,26 @@ import { Button } from 'components/Button';
 import { Pizzas } from 'components/Pizzas';
 import styled from 'styled-components';
 import arrow from "assets/arrow.svg";
+import { breakpoints } from 'style';
 
 interface MainProps {};
 
 const Categories = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
     & > ${Button}:not(:last-child) {
         margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: ${breakpoints.md}) {
+        flex-direction: column;
+
+        & > ${Button} {
+            margin-right: 0;
+        }
     }
 `;
 
@@ -16,6 +30,10 @@ const SortBlock = styled.div`
     display: flex;
 
     justify-content: space-between;
+
+    @media (max-width: ${breakpoints.lg}) {
+        flex-flow: column wrap;
+    }
 `;
 
 const SelectBlock = styled.div`
@@ -23,6 +41,11 @@ const SelectBlock = styled.div`
 
     display: flex;
     align-items: center;
+
+    @media (max-width: ${breakpoints.lg}) {
+        margin-top: 20px;
+        justify-content: flex-end;
+    }
 `;
 
 const Select = styled.button<{show?: boolean}>`

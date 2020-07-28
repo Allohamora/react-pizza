@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { PizzaLoading, Pizza } from 'components/Pizza';
+import { PizzaLoading, PizzaLoadingContainer, Pizza, PizzaContainer } from 'components/Pizza';
+import db from "../../../public/db.json";
 
 interface PizzasProps {};
 
@@ -17,19 +18,19 @@ const Title = styled.h2`
 `;
 
 const Container = styled.div`
+    display: flex;
+    flex-wrap: wrap;
 
+    justify-content: space-around;
+
+    & > ${PizzaContainer} {
+        padding-bottom: 65px;
+    }
+
+    & > ${PizzaLoadingContainer} {
+        padding-bottom: 65px;
+    }
 `;
-
-const pizza = {
-    id: 0,
-    imageUrl: "https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg",
-    name: "Пепперони Фреш с перцем",
-    types: [0, 1],
-    sizes: [26, 30, 40],
-    price: 803,
-    category: 0,
-    rating: 4
-}
 
 export const Pizzas: React.FC<PizzasProps> = props => {
 
@@ -45,8 +46,12 @@ export const Pizzas: React.FC<PizzasProps> = props => {
             <Container>
                 {
                     loading
-                        ? <PizzaLoading />
-                        : <Pizza pizza={pizza} />
+                        ? new Array(8).fill(null).map((_, i) => (
+                            <PizzaLoading key={i} />
+                        ))
+                        : db.pizzas.map((pizza) => (
+                            <Pizza key={pizza.id} pizza={pizza} />
+                        ))
                 }
             </Container>
         </div>
