@@ -41,12 +41,14 @@ export const theme = {
     },
 
     btn: {
-        bg: "#F9F9F9",
-        color: "#2C2C2C",
-
-        active: {
-            bg: "#282828",
-            color: white,
+        secondary: {
+            bg: "#F9F9F9",
+            color: "#2C2C2C",
+    
+            active: {
+                bg: "#282828",
+                color: white,
+            }
         },
 
         add: {
@@ -82,6 +84,16 @@ export const GlobalStyles = createGlobalStyle`
 
     a {
         text-decoration: none;
+    }
+
+    button {
+        outline: none;
+
+        border: none;
+
+        cursor: pointer;
+
+        background: transparent;
     }
 
     body {

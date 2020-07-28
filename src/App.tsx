@@ -25,6 +25,8 @@ const AppContainer = styled.div`
     width: calc(100vw - 100px);
     max-width: 1400px;
 
+    min-height: 100vh;
+
     margin: 0 auto;
 `;
 
