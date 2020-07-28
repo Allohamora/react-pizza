@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { PizzaLoading } from 'components/Pizza';
 import { Button } from 'components/Button';
+import { Pizzas } from 'components/Pizzas';
 import styled from 'styled-components';
 import arrow from "assets/arrow.svg";
 
@@ -54,12 +54,12 @@ const Select = styled.button<{show?: boolean}>`
 `;
 
 const Selected = styled.span`
-    color: #FE5F1E;
-
     padding-bottom: 1px;
     margin-left: 8px;
 
-    border-bottom: 1px dashed #FE5F1E;
+    color: ${props => props.theme.select.selected.color};
+
+    border-bottom: 1px dashed ${props => props.theme.select.selected.border};
 `;
 
 const Options = styled.div<{show?: boolean}>`
@@ -72,7 +72,7 @@ const Options = styled.div<{show?: boolean}>`
 
     padding: 14px 0;
 
-    background: #FFFFFF;
+    background: ${props => props.theme.select.options.bg};
 
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
     
@@ -94,23 +94,28 @@ const Option = styled.button<{selected?: boolean}>`
     line-height: 17px;
 
     &:hover {
-        background: rgba(254, 95, 30, 0.05);
+        background: ${props => props.theme.select.option.selected.bg};
     }
 
     ${props => props.selected && `
-        background: rgba(254, 95, 30, 0.05);
-        color: #FE5F1E;
+        background: ${props.theme.select.option.selected.bg};
+        color: ${props.theme.select.option.selected.color};
         font-weight: 700;
     `}
 `;
 
-const Pizzas = styled.div`
+const PizzasWrap = styled.div`
     margin-top: 32px;
 `;
+
+const categories = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"];
+const sortOptions = ["популярности", "цене", "алфавиту"]
 
 export const Main: React.FC<MainProps> = props => {
 
     const [show, setShow] = useState(false);
+    const [activeCategory, setActiveCategory] = useState(0);
+    const [activeSort, setActiveSort] = useState(0);
 
     const clickHandler = () => setShow(!show);
 
@@ -119,30 +124,47 @@ export const Main: React.FC<MainProps> = props => {
             <SortBlock>
 
                 <Categories>
-                    <Button secondary active >Все</Button>
-                    <Button secondary >Мясные</Button>
-                    <Button secondary >Вегетарианская</Button>
-                    <Button secondary >Гриль</Button>
-                    <Button secondary >Острые</Button>
-                    <Button secondary >Закрытые</Button>
+                    {
+                        categories.map((category, i) => (
+                            <Button
+                                key={i}
+                                secondary 
+                                active={i === activeCategory}
+                                onClick={() => setActiveCategory(i)}
+                            >
+                                {category}
+                            </Button>
+                        ))
+                    }
                 </Categories>
 
                 <SelectBlock>
                     <Select show={show} onClick={clickHandler} >
-                        Сортировка по: <Selected>популярности</Selected>
+                        Сортировка по: <Selected>{sortOptions[activeSort]}</Selected>
                     </Select>
                     <Options show={show} >
-                        <Option selected >популярности</Option>
-                        <Option>по цене</Option>
-                        <Option>по алфавиту</Option>
+                        {
+                            sortOptions.map((option, i) => (
+                                <Option 
+                                    key={i} 
+                                    selected={i === activeSort}
+                                    onClick={() => {
+                                        setActiveSort(i);
+                                        setShow(false);
+                                    }}
+                                >
+                                    {option}
+                                </Option>
+                            ))
+                        }
                     </Options>
                 </SelectBlock>
 
             </SortBlock>
 
-            <Pizzas>
-                <PizzaLoading />
-            </Pizzas>
+            <PizzasWrap>
+                <Pizzas />
+            </PizzasWrap>
         </div>
     );
 };

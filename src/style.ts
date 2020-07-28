@@ -1,8 +1,9 @@
 import { createGlobalStyle } from "styled-components"
 
-const { white, orange } = {
+const { white, orange, black } = {
     white: "#FFFFFF",
     orange: "#FE5F1E",
+    black: "#000000",
 }
 
 export const theme = {
@@ -28,13 +29,42 @@ export const theme = {
     },
 
     select: {
-        bg: "#F3F3F3",
-        color: "#2C2C2C",
+        selected: {
+            color: orange,
+            border: orange
+        },
+
+        options: {
+            bg: white,
+        },
 
         option: {
-            bg: "transparent",
+            selected: {
+                bg: "rgba(254, 95, 30, 0.05)",
+                color: orange,
+            }
+        }
+    },
 
-            active: {
+    pizzas: {
+        color: black,
+    },
+
+    pizza: {
+        color: black,
+
+        price: {
+            color: black,
+        },
+
+        selector: {
+            bg: "#F3F3F3",
+        },
+
+        option: {
+            color: "#2C2C2C",
+
+            selected: {
                 bg: white,
             }
         }
@@ -52,13 +82,14 @@ export const theme = {
         },
 
         add: {
-            bg: orange,
-            color: white,
-            border: orange,
+            color: "#EB5A1E",
+            border: "#EB5A1E",
 
-            active: {
-                bg: white,
-                color: "#EB5A1E",
+
+            hover: {
+                bg: orange,
+                color: white,
+                plusBg: white,
             }
         },
 
@@ -94,6 +125,10 @@ export const GlobalStyles = createGlobalStyle`
         cursor: pointer;
 
         background: transparent;
+    }
+
+    ul {
+        list-style none;
     }
 
     body {
