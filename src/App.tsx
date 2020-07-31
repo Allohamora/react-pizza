@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Header } from 'components/Header';
 import { Switch, Redirect, Route } from 'react-router-dom';
-import { Main } from "pages/Main";
-import { Cart } from "pages/Cart";
 import { Container } from 'containers/Container';
+
+const Cart = React.lazy(() => import("pages/Cart"));
+const Main = React.lazy(() => import("pages/Main"));
 
 interface AppProps {};
 
@@ -41,8 +42,18 @@ export const App: React.FC<AppProps> = props => {
                 <Header />
                 <Content>
                     <Switch>
-                        <Route path="/" exact component={Main} />
-                        <Route path="/cart" component={Cart} />
+                        <Route path="/" exact render={() => (
+                            <React.Suspense fallback={<div>loading...</div>} >
+                                <Main />
+                            </React.Suspense>
+                        )} />
+
+                        <Route path="/cart" render={() => (
+                            <React.Suspense fallback={<div>loading...</div>} >
+                                <Cart />
+                            </React.Suspense>
+                        )} />
+                        
                         <Redirect to="/" />
                     </Switch>
                 </Content>
