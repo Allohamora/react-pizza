@@ -5,9 +5,11 @@ interface ButtonProps {
     cart?: boolean,
     primary?: boolean,
     secondary?: boolean,
+    gray?: boolean,
     sort?: boolean,
     add?: boolean,
     active?: boolean,
+
     pd1?: boolean,
 };
 
@@ -24,6 +26,21 @@ export const Button = styled.button<ButtonProps>`
     &:hover {
         opacity: .7;
     }
+
+    ${props => `
+        color: ${props.theme.btn_primary$color};
+        background: ${props.theme.btn_primary$bg};
+    `}
+
+    ${props => props.pd1 && `
+        padding: 18px 45px;
+    `}
+
+    ${({gray, theme}) => gray && `
+        color: ${theme.btn_gray$color};
+        background: ${theme.btn_gray$bg};
+        border: 2px solid ${theme.btn_gray$border};
+    `}
 
     ${({ secondary, theme }) => secondary && `
         color: ${theme.btn_secondary$color};

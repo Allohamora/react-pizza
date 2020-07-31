@@ -11,7 +11,7 @@ const Container = styled.div`
     align-items: center;
     flex-flow: wrap column;
 
-    padding: 80px 0;
+    padding: 40px 0;
 `;
 
 const Title = styled.h2`
@@ -20,7 +20,7 @@ const Title = styled.h2`
     font-size: 32px;
     line-height: 39px;
 
-    color: #000000;
+    color: ${props => props.theme.emptycart__title$color};
 `;
 
 const Text = styled.p`
@@ -34,13 +34,13 @@ const Text = styled.p`
     text-align: center;
     letter-spacing: 0.01em;
 
-    color: #777777;
+    color: ${props => props.theme.emptycart__text$color};
 `;
 
 const Image = styled.img`
     display: block;
     
-    padding-top: 47px;
+    margin-top: 47px;
 `;
 
 const SLink = styled(Link)`

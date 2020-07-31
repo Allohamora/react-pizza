@@ -4,7 +4,7 @@ import { Container } from 'containers/Container';
 import { Brand } from 'components/Brand';
 import { Button } from "components/Button";
 import { Link } from 'react-router-dom';
-import cart from "assets/cart.svg";
+import { ReactComponent as CartIcon } from "assets/cart.svg";
 
 interface HeaderProps {};
 
@@ -32,12 +32,14 @@ const CartInner = styled.span`
     display: flex;
 
     align-items: center;
-`;
 
-const CartLogo = styled.img`
-    margin-right: 7px;
+    & svg {
+        width: 18px;
+        height: 18px;
+
+        margin-right: 7px;
+    }
 `;
-CartLogo.defaultProps = { src: cart, alt: "logo" };
 
 const Delimiter = styled.div`
     width: 1px;
@@ -61,7 +63,7 @@ export const Header: React.FC<HeaderProps> = props => {
                             <CartInner>
                                 <span>520 ₽</span>
                                 <Delimiter />  
-                                <CartLogo />
+                                <CartIcon />
                                 <span>3</span>
                             </CartInner>
                         </Button>

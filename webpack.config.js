@@ -44,7 +44,11 @@ module.exports = {
                 loaders: ["style-loader", "css-loader"]
             },
             {
-                test: /.(jpe?g|png|gif|svg)$/i,
+                test: /.svg$/,
+                loaders: ["@svgr/webpack", "file-loader"]
+            },
+            {
+                test: /.(jpe?g|png|gif)$/i,
                 loader: "file-loader",
                 options: {
                     name: "assests/[name].[ext]"

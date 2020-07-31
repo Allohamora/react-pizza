@@ -37,6 +37,13 @@ export const theme = {
     pizza__option$color: "#2C2C2C",
     pizza__option_selected$bg: white,
 
+    btn_primary$bg: orange,
+    btn_primary$color: white,
+
+    btn_gray$bg: "transparent",
+    btn_gray$border: "#D3D3D3",
+    btn_gray$color: "#D3D3D3",
+
     btn_secondary$bg: "#282828",
     btn_secondary$color: "#FFFFFF",
 
@@ -54,6 +61,9 @@ export const theme = {
     btn_cart$color: white,
     btn_cart$bg: orange,
     btn__delimiter_cart$bg: "rgba(255, 255, 255, 0.25)",
+
+    emptycart__title$color: black,
+    emptycart__text$color: "#777777",
 };
 
 export const GlobalStyles = createGlobalStyle`
