@@ -10,6 +10,7 @@ const { white, orange, black } = {
 export const breakpoints = {
     lg: "1220px",
     md: "600px",
+    cartPizza: "700px",
 }
 
 // block__elem_mod$property
@@ -63,8 +64,25 @@ export const theme = {
     btn_cart$bg: orange,
     btn__delimiter_cart$bg: "rgba(255, 255, 255, 0.25)",
 
-    emptycart__title$color: black,
-    emptycart__text$color: "#777777",
+    emptyCart__title$color: black,
+    emptyCart__text$color: "#777777",
+
+    cart__header$border: "#F4F4F4",
+
+    cart__cartBlock$color: black,
+    cart__cartBlock$stroke: "#3F3F3F",
+
+    cart__clearBtn$color: "#B6B6B6",
+
+    cart__total$color: black,
+
+    cart__sum$color: "#FE5F1E",
+
+    cart__item$border: "#F4F4F4",
+    cart__item__title$color: black,
+    cart__item__text$color: "#8D8D8D",
+    cart__item__count$color: black,
+    cart__item__price$color: black,
 };
 
 export const GlobalStyles = createGlobalStyle`

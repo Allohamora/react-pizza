@@ -2,19 +2,28 @@ import React from 'react';
 import { CartPizza } from './Cart';
 import styled from 'styled-components';
 import { IconButton } from 'components/Button';
+import { breakpoints } from 'style';
 
 interface CartItemProps {
     pizza: CartPizza
 };
 
 const Container = styled.div`
-    display: grid;
-
-    grid-template-columns: 80px 1fr 102px 1fr 32px;
+    display: flex;
 
     padding: 20px 0;
 
-    border-bottom: 1px solid #F4F4F4;
+    border-bottom: 1px solid ${props => props.theme.cart__item$border};
+
+    @media( max-width: ${breakpoints.cartPizza} ) {
+        flex-flow: column wrap;   
+    }
+`;
+
+const ImageBlock = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const Image = styled.img`
@@ -24,7 +33,9 @@ const Image = styled.img`
     height: 80px;
 `;
 
-const TextBlock = styled.div`
+const Content = styled.div`
+    flex-grow: 1;
+
     padding: 14px 0;
     margin: 0 15px;
 `;
@@ -37,7 +48,7 @@ const Title = styled.h3`
 
     letter-spacing: 0.01em;
 
-    color: #000000;
+    color: ${props => props.theme.cart__item__title$color};
 `;
 
 const Text = styled.p`
@@ -48,10 +59,12 @@ const Text = styled.p`
 
     letter-spacing: 0.01em;
 
-    color: #8D8D8D;
+    color: ${props => props.theme.cart__item__text$color};
 `;
 
 const Count = styled.div`
+    min-width: 102px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -63,10 +76,12 @@ const Count = styled.div`
 
     letter-spacing: 0.01em;
 
-    color: #000000;
+    color: ${props => props.theme.cart__item__count$color};
 `;
 
 const Price = styled.div`
+    flex-grow: 1;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,13 +93,37 @@ const Price = styled.div`
 
     letter-spacing: 0.01em;
 
-    color: #000000;
+    color: ${props => props.theme.cart__item__price$color};
 `;
 
-const RemoveBlock = styled.div`
+const Remove = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+`;
+
+const First = styled.div`
+    flex-grow: 1;
+
+    display: flex;
+
+    @media( max-width: ${breakpoints.cartPizza} ) {
+        margin-bottom: 20px;
+
+        & ${Content} {
+            text-align: center;
+        }
+
+        & ${Image} {
+            margin-left: 10px;
+        }
+    }
+`;
+
+const Second = styled.div`
+    flex-grow: 1;
+
+    display: flex;
 `;
 
 export const CartItem: React.FC<CartItemProps> = ({ pizza }) => {
@@ -93,26 +132,32 @@ export const CartItem: React.FC<CartItemProps> = ({ pizza }) => {
 
     return (
         <Container>
-            <Image src={imageUrl} alt="pizza" />
+            <First>
+                <ImageBlock>
+                    <Image src={imageUrl} alt="pizza" />
+                </ImageBlock>
 
-            <TextBlock>
-                <Title>{name}</Title>
-                <Text>{type} тесто, {size} см.</Text>
-            </TextBlock>
+                <Content>
+                    <Title>{name}</Title>
+                    <Text>{type} тесто, {size} см.</Text>
+                </Content>
+            </First>
 
-            <Count>
-                <IconButton minus />
-                    2
-                <IconButton plus />
-            </Count>
+            <Second>
+                <Count>
+                    <IconButton minus />
+                        2
+                    <IconButton plus />
+                </Count>
 
-            <Price>
-                {price} ₽ 
-            </Price>
+                <Price>
+                    {price} ₽ 
+                </Price>
 
-            <RemoveBlock>
-                <IconButton gray xMark />
-            </RemoveBlock>
+                <Remove>
+                    <IconButton gray xMark />
+                </Remove>
+            </Second>
 
         </Container>
     );

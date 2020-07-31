@@ -20,7 +20,7 @@ const Title = styled.h2`
     font-size: 32px;
     line-height: 39px;
 
-    color: ${props => props.theme.emptycart__title$color};
+    color: ${props => props.theme.emptyCart__title$color};
 `;
 
 const Text = styled.p`
@@ -34,7 +34,7 @@ const Text = styled.p`
     text-align: center;
     letter-spacing: 0.01em;
 
-    color: ${props => props.theme.emptycart__text$color};
+    color: ${props => props.theme.emptyCart__text$color};
 `;
 
 const Image = styled.img`

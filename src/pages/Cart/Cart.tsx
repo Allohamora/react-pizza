@@ -7,6 +7,7 @@ import { CartItem } from './CartItem';
 import { Button } from 'components/Button';
 import { ReactComponent as LeftIcon } from "assets/left.svg";
 import { Link } from 'react-router-dom';
+import { breakpoints } from 'style';
 
 interface CartProps {};
 
@@ -23,7 +24,15 @@ const Header = styled.div`
 
     padding-bottom: 33px;
 
-    border-bottom: 1px solid #F4F4F4;
+    border-bottom: 1px solid ${props => props.theme.cart__header$border};
+
+    @media (max-width: ${breakpoints.cartPizza}) {
+        flex-flow: column wrap;
+
+        & > * {
+            margin-top: 5px;
+        }
+    }
 `;
 
 const CartBlock = styled.span`
@@ -37,7 +46,7 @@ const CartBlock = styled.span`
 
     letter-spacing: 0.01em;
 
-    color: #000000;
+    color: ${props => props.theme.cart__cartBlock$color};
 
     & svg {
         width: 30px;
@@ -47,7 +56,7 @@ const CartBlock = styled.span`
     }
 
     & svg path {
-        stroke: #3F3F3F;
+        stroke: ${props => props.theme.cart__cartBlock$stroke};
     }
 `;
 
@@ -60,7 +69,7 @@ const ClearButton = styled.button`
     font-size: 16px;
     line-height: 19px;
 
-    color: #B6B6B6;
+    color: ${props => props.theme.cart__clearBtn$color};
 
     & svg {
         margin-right: 5px;
@@ -80,7 +89,15 @@ const Total = styled.div`
 
     letter-spacing: 0.01em;
 
-    color: #000000;
+    color: ${props => props.theme.cart__total$color};
+
+    @media (max-width: ${breakpoints.cartPizza}) {
+        flex-flow: column wrap;
+
+        & > * {
+            margin-top: 5px;
+        }
+    }
 `;
 
 const Count = styled.span`
@@ -89,7 +106,7 @@ const Count = styled.span`
 
 const Sum  = styled.span`
     font-weight: 700;
-    color: #FE5F1E;
+    color: ${props => props.theme.cart__sum$color};
 `;
 
 const Buttons = styled.div`
@@ -97,6 +114,18 @@ const Buttons = styled.div`
     justify-content: space-between;
 
     padding-top: 30px;
+
+    @media (max-width: ${breakpoints.cartPizza}) {
+        flex-flow: wrap column-reverse;
+
+        & > * {
+            margin-top: 10px;
+        }
+
+        & a > button {
+            width: 100%;
+        }
+    }
 `;
 
 const BackInner = styled.div`
@@ -150,9 +179,11 @@ export const Cart: React.FC<CartProps> = props => {
                     <CartIcon /> Корзина
                 </CartBlock>
 
-                <ClearButton>
-                    <TrashIcon /> Очистить корзину
-                </ClearButton>
+                <span>
+                    <ClearButton>
+                        <TrashIcon /> Очистить корзину
+                    </ClearButton>
+                </span>
             </Header>
 
             <div>
@@ -163,6 +194,7 @@ export const Cart: React.FC<CartProps> = props => {
                 <span>
                     Всего пиц: <Count>3 шт.</Count>
                 </span>
+
                 <span>
                     Сумма заказа: <Sum>900 ₽</Sum>
                 </span>
@@ -176,6 +208,7 @@ export const Cart: React.FC<CartProps> = props => {
                         </BackInner>
                     </Button>
                 </Link>
+
                 <Button pd1 >Оплатить сейчас</Button>
             </Buttons>
 
