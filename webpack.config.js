@@ -20,11 +20,11 @@ const mode = argv.find((arg, i) => {
     return arg;
 });
 
-// delete build dir
-fs.rmdirSync(path.join(__dirname, "./build"), { recursive: true });
-
 const isProduction = mode === "production" ? true : false;
 const isAnalyze = argv.find(arg => arg === "--analyze") ? true : false;
+
+// delete build dir
+isProduction && fs.rmdirSync(path.join(__dirname, "./build"), { recursive: true });
 
 const getPlugins = () => {
     const plugins = [
@@ -45,7 +45,7 @@ const getPlugins = () => {
 const fileLoader = {
     loader: "file-loader",
     options: {
-        name: isProduction ? "assets/[hash:8].[ext]" : "assets/[name].[ext]"
+        name: isProduction ? "assets/[contenthash:8].[ext]" : "assets/[name].[ext]"
     }
 };
 
@@ -54,8 +54,8 @@ module.exports = {
     entry: "./src/index.tsx",
     output: {
         path: path.resolve(__dirname, "./build"),
-        filename: isProduction ? "[hash:8].js" : "[name].js",
-        chunkFilename: isProduction ? "[hash:8].chunk.js" : "[name].chunk.js"
+        filename: isProduction ? "[contenthash:8].js" : "[name].js",
+        chunkFilename: isProduction ? "[contenthash:8].chunk.js" : "[name].chunk.js"
     },
     optimization: {
         minimize: isProduction,
