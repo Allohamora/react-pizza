@@ -71,6 +71,7 @@ export const Button = styled.button<ButtonProps>`
         border: 1px solid ${props.theme.btn_add$border};
 
         color: ${props.theme.btn_add$color};
+        background: ${props.theme.btn_add$bg};
 
         &:hover {
             background: ${props.theme.btn_add_hover$bg};

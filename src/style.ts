@@ -53,6 +53,7 @@ export const theme = {
     btn_sort_active$color: white,
 
     btn_add$color:"#EB5A1E",
+    btn_add$bg: white,
     btn_add$border: "#EB5A1E",
     btn_add_hover$bg: orange,
     btn_add_hover$color: white,
