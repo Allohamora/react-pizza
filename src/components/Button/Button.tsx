@@ -5,6 +5,7 @@ interface ButtonProps {
     cart?: boolean,
     primary?: boolean,
     secondary?: boolean,
+    sort?: boolean,
     add?: boolean,
     active?: boolean,
     pd1?: boolean,
@@ -24,14 +25,22 @@ export const Button = styled.button<ButtonProps>`
         opacity: .7;
     }
 
-    ${({ secondary, active, theme }) => secondary && `
+    ${({ secondary, theme }) => secondary && `
+        color: ${theme.btn_secondary$color};
+        background: ${theme.btn_secondary$bg};
+        
+        padding-left: 40px;
+        padding-right: 40px;
+    `}
+
+    ${({ sort, active, theme }) => sort && `
             padding: 14px 25px;
-            color: ${theme.btn_secondary$color};
-            background: ${theme.btn_secondary$bg};
+            color: ${theme.btn_sort$color};
+            background: ${theme.btn_sort$bg};
 
             ${active && `
-                color: ${theme.btn_secondary_active$color};
-                background: ${theme.btn_secondary_active$bg};
+                color: ${theme.btn_sort_active$color};
+                background: ${theme.btn_sort_active$bg};
             `}
         `
     }

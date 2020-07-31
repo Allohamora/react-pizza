@@ -151,7 +151,7 @@ export const Main: React.FC<MainProps> = props => {
                         categories.map((category, i) => (
                             <Button
                                 key={i}
-                                secondary 
+                                sort 
                                 active={i === activeCategory}
                                 onClick={() => setActiveCategory(i)}
                             >

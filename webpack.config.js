@@ -52,6 +52,10 @@ module.exports = {
             }
         ]
     },
+    devServer: {
+        historyApiFallback: true,
+        compress: true,
+    },
     resolve: {
         plugins: [
             new TsconfigPathsPlugin({ configFile: "./tsconfig.json" }),

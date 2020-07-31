@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components"
+import reset from "styled-reset";
 
 const { white, orange, black } = {
     white: "#FFFFFF",
@@ -36,10 +37,13 @@ export const theme = {
     pizza__option$color: "#2C2C2C",
     pizza__option_selected$bg: white,
 
-    btn_secondary$bg: "#F9F9F9",
-    btn_secondary$color: "#2C2C2C",
-    btn_secondary_active$bg: "#282828",
-    btn_secondary_active$color: white,
+    btn_secondary$bg: "#282828",
+    btn_secondary$color: "#FFFFFF",
+
+    btn_sort$bg: "#F9F9F9",
+    btn_sort$color: "#2C2C2C",
+    btn_sort_active$bg: "#282828",
+    btn_sort_active$color: white,
 
     btn_add$color:"#EB5A1E",
     btn_add$border: "#EB5A1E",
@@ -53,6 +57,8 @@ export const theme = {
 };
 
 export const GlobalStyles = createGlobalStyle`
+    ${reset}
+
     *,
     *::after,
     *::before {
