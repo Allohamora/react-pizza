@@ -1,6 +1,6 @@
 import React from 'react';
-import { CartPizza } from './Cart';
 import styled from 'styled-components';
+import { CartPizza } from './Cart';
 import { IconButton } from 'components/Button';
 import { breakpoints } from 'style';
 
@@ -41,22 +41,14 @@ const Content = styled.div`
 `;
 
 const Title = styled.h3`
-    font-style: normal;
     font-weight: 700;
-    font-size: 22px;
-    line-height: 27px;
-
     letter-spacing: 0.01em;
 
     color: ${props => props.theme.cart__item__title$color};
 `;
 
 const Text = styled.p`
-    font-style: normal;
-    font-weight: normal;
     font-size: 18px;
-    line-height: 22px;
-
     letter-spacing: 0.01em;
 
     color: ${props => props.theme.cart__item__text$color};
@@ -69,11 +61,8 @@ const Count = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    font-style: normal;
     font-weight: 700;
     font-size: 22px;
-    line-height: 27px;
-
     letter-spacing: 0.01em;
 
     color: ${props => props.theme.cart__item__count$color};
@@ -86,11 +75,8 @@ const Price = styled.div`
     justify-content: center;
     align-items: center;
 
-    font-style: normal;
     font-weight: 700;
     font-size: 22px;
-    line-height: 27px;
-
     letter-spacing: 0.01em;
 
     color: ${props => props.theme.cart__item__price$color};

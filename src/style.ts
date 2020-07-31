@@ -46,14 +46,14 @@ export const theme = {
     btn_gray$color: "#D3D3D3",
 
     btn_secondary$bg: "#282828",
-    btn_secondary$color: "#FFFFFF",
+    btn_secondary$color: white,
 
     btn_sort$bg: "#F9F9F9",
     btn_sort$color: "#2C2C2C",
     btn_sort_active$bg: "#282828",
     btn_sort_active$color: white,
 
-    btn_add$color:"#EB5A1E",
+    btn_add$color: "#EB5A1E",
     btn_add$bg: white,
     btn_add$border: "#EB5A1E",
     btn_add_hover$bg: orange,
@@ -76,7 +76,7 @@ export const theme = {
 
     cart__total$color: black,
 
-    cart__sum$color: "#FE5F1E",
+    cart__sum$color: orange,
 
     cart__item$border: "#F4F4F4",
     cart__item__title$color: black,

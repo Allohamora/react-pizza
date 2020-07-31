@@ -39,11 +39,8 @@ const CartBlock = styled.span`
     display: flex;
     align-items: center;
 
-    font-style: normal;
     font-weight: 700;
     font-size: 32px;
-    line-height: 39px;
-
     letter-spacing: 0.01em;
 
     color: ${props => props.theme.cart__cartBlock$color};
@@ -64,10 +61,7 @@ const ClearButton = styled.button`
     display: flex;
     align-items: center;
 
-    font-style: normal;
-    font-weight: normal;
     font-size: 16px;
-    line-height: 19px;
 
     color: ${props => props.theme.cart__clearBtn$color};
 
@@ -82,11 +76,7 @@ const Total = styled.div`
 
     padding-top: 30px;
 
-    font-style: normal;
-    font-weight: normal;
     font-size: 22px;
-    line-height: 27px;
-
     letter-spacing: 0.01em;
 
     color: ${props => props.theme.cart__total$color};

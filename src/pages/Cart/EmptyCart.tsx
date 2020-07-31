@@ -15,10 +15,8 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-    font-style: normal;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 32px;
-    line-height: 39px;
 
     color: ${props => props.theme.emptyCart__title$color};
 `;
@@ -26,14 +24,10 @@ const Title = styled.h2`
 const Text = styled.p`
     padding-top: 10px;
 
-    font-style: normal;
-    font-weight: normal;
     font-size: 18px;
-    line-height: 26px;
-
-    text-align: center;
     letter-spacing: 0.01em;
 
+    text-align: center;
     color: ${props => props.theme.emptyCart__text$color};
 `;
 

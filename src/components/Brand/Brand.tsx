@@ -10,21 +10,13 @@ const Title = styled.h1`
     font-weight: 900;
     font-size: 24px;
 
-    line-height: 29px;
-
-    letter-spacing: 0.01em;
-
     text-transform: uppercase;
 `;
 
 const Text = styled.p`
-    color: ${props => props.theme.brand__text$color};
-
-    font-style: normal;
-    font-weight: normal;
     font-size: 16px;
 
-    line-height: 19px;
+    color: ${props => props.theme.brand__text$color};
 `;
 
 const Container = styled.div`

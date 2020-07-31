@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Button } from 'components/Button';
-import { Pizzas } from 'components/Pizzas';
 import styled from 'styled-components';
 import arrow from "assets/arrow.svg";
+import { Button } from 'components/Button';
+import { Pizzas } from 'components/Pizzas';
 import { breakpoints } from 'style';
 
 interface MainProps {};
@@ -49,14 +49,12 @@ const SelectBlock = styled.div`
 `;
 
 const Select = styled.button<{show?: boolean}>`
-    font-style: normal;
+    display: flex;
+
     font-weight: 700;
     font-size: 14px;
-    line-height: 17px;
-
     letter-spacing: 0.015em;
 
-    display: flex;
     align-items: center;
 
     &::before {
@@ -109,12 +107,9 @@ const Option = styled.button<{selected?: boolean}>`
 
     padding: 10px 16px;
 
-    text-align: left;
-
-    font-style: normal;
-    font-weight: normal;
     font-size: 14px;
-    line-height: 17px;
+
+    text-align: left;
 
     &:hover {
         background: ${props => props.theme.select__option_selected$bg};

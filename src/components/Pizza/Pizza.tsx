@@ -35,12 +35,9 @@ const Title = styled.h3`
 
     font-weight: 800;
     font-size: 20px;
-    line-height: 24px;
-
-    text-align: center;
-
     letter-spacing: 0.01em;
 
+    text-align: center;
     color: ${props => props.theme.pizza$color};
 `;
 
@@ -67,16 +64,11 @@ const Option = styled.li<{selected?: boolean}>`
 
     padding: 10px;
 
-    font-style: normal;
     font-weight: 700;
     font-size: 14px;
-
-    line-height: 17px;
-
-    text-align: center;
-
     letter-spacing: 0.015em;
 
+    text-align: center;
     color: ${props => props.theme.pizza__option$color};
 
     cursor: pointer;
@@ -98,8 +90,6 @@ const Footer = styled.div`
 const Price = styled.div`
     font-weight: 800;
     font-size: 22px;
-    line-height: 27px;
-
     letter-spacing: 0.015em;
 
     color: ${props => props.theme.pizza__price$color};

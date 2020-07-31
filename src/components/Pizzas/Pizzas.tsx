@@ -3,13 +3,11 @@ import styled from 'styled-components';
 import { PizzaLoading, PizzaLoadingContainer, Pizza, PizzaContainer } from 'components/Pizza';
 import db from "../../../public/db.json";
 
-interface PizzasProps {};
+interface PizzasProps { };
 
 const Title = styled.h2`
     font-weight: 800;
     font-size: 32px;
-    line-height: 39px;
-
     letter-spacing: 0.01em;
 
     margin-bottom: 32px;

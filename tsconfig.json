@@ -1,13 +1,14 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "esnext",
         "target": "es5",
         "jsx": "react",
         "baseUrl": "./src",
+        "moduleResolution": "node",
         "resolveJsonModule": true,
         "allowJs": true,
         "esModuleInterop": true,
-        "noImplicitAny": true
+        "noImplicitAny": true,
     },
     "include": ["src", "__test__"],
     "exclude": ["node_modules"]
