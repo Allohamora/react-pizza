@@ -5,7 +5,7 @@ import styled from 'styled-components';
 interface BrandProps {};
 
 const Title = styled.h1`
-    color: ${props => props.theme.brand.title.color};
+    color: ${props => props.theme.brand__title$color};
 
     font-weight: 900;
     font-size: 24px;
@@ -18,7 +18,7 @@ const Title = styled.h1`
 `;
 
 const Text = styled.p`
-    color: ${props => props.theme.brand.text.color};
+    color: ${props => props.theme.brand__text$color};
 
     font-style: normal;
     font-weight: normal;

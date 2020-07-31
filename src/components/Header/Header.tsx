@@ -25,7 +25,7 @@ const Inner = styled.div`
 `;
 
 const Wrap = styled.div`
-    border-bottom: 1px solid ${props => props.theme.header.border};
+    border-bottom: 1px solid ${props => props.theme.header$border};
 `;
 
 const CartInner = styled.span`
@@ -45,7 +45,7 @@ const Delimiter = styled.div`
 
     margin: 0 14px;
 
-    background: ${props => props.theme.btn.cart.delimiter.bg};
+    background: ${props => props.theme.btn__delimiter_cart$bg};
 `;
 
 export const Header: React.FC<HeaderProps> = props => {

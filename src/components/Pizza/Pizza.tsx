@@ -41,13 +41,13 @@ const Title = styled.h3`
 
     letter-spacing: 0.01em;
 
-    color: ${props => props.theme.pizza.color};
+    color: ${props => props.theme.pizza$color};
 `;
 
 const Selector = styled.div`
     padding: 7px;
 
-    background: ${props => props.theme.pizza.selector.bg};
+    background: ${props => props.theme.pizza__selector$bg};
 
     border-radius: 10px;
 `;
@@ -77,12 +77,12 @@ const Option = styled.li<{selected?: boolean}>`
 
     letter-spacing: 0.015em;
 
-    color: ${props => props.theme.pizza.option.color};
+    color: ${props => props.theme.pizza__option$color};
 
     cursor: pointer;
 
     ${props => props.selected && `
-        background: ${props.theme.pizza.option.selected.bg};
+        background: ${props.theme.pizza__option_selected$bg};
         border-radius: 5px;
     `}
 `;
@@ -102,7 +102,7 @@ const Price = styled.div`
 
     letter-spacing: 0.015em;
 
-    color: ${props => props.theme.pizza.price.color};
+    color: ${props => props.theme.pizza__price$color};
 `;
 
 const TYPES = ["тонкое", "традиционное"];

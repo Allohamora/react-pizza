@@ -12,7 +12,7 @@ const Wrap = styled.div`
     padding: 50px 0;
     margin: 0 auto;
 
-    background-color: ${props => props.theme.wrap.bg};
+    background-color: ${props => props.theme.wrap$bg};
 `;
 
 const AppContainer = styled.div`
@@ -20,7 +20,7 @@ const AppContainer = styled.div`
 
     border-radius: 10px;
 
-    background: ${props => props.theme.app.bg};
+    background: ${props => props.theme.app$bg};
 
     width: calc(100vw - 100px);
     max-width: 1400px;

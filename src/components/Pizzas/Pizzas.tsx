@@ -14,7 +14,7 @@ const Title = styled.h2`
 
     margin-bottom: 32px;
 
-    color: ${props => props.theme.pizzas.color};
+    color: ${props => props.theme.pizzas$color};
 `;
 
 const Container = styled.div`

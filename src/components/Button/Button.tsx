@@ -26,29 +26,29 @@ export const Button = styled.button<ButtonProps>`
 
     ${({ secondary, active, theme }) => secondary && `
             padding: 14px 25px;
-            color: ${theme.btn.secondary.color};
-            background: ${theme.btn.secondary.bg};
+            color: ${theme.btn_secondary$color};
+            background: ${theme.btn_secondary$bg};
 
             ${active && `
-                color: ${theme.btn.secondary.active.color};
-                background: ${theme.btn.secondary.active.bg};
+                color: ${theme.btn_secondary_active$color};
+                background: ${theme.btn_secondary_active$bg};
             `}
         `
     }
 
     ${props => props.cart && `
-        color: ${props.theme.btn.cart.color};
-        background: ${props.theme.btn.cart.bg};
+        color: ${props.theme.btn_cart$color};
+        background: ${props.theme.btn_cart$bg};
     `}
 
     ${props => props.add && `
-        border: 1px solid ${props.theme.btn.add.border};
+        border: 1px solid ${props.theme.btn_add$border};
 
-        color: ${props.theme.btn.add.color};
+        color: ${props.theme.btn_add$color};
 
         &:hover {
-            background: ${props.theme.btn.add.hover.bg};
-            color: ${props.theme.btn.add.hover.color};
+            background: ${props.theme.btn_add_hover$bg};
+            color: ${props.theme.btn_add_hover$color};
 
             opacity: 1;
         }
@@ -63,12 +63,12 @@ export const Button = styled.button<ButtonProps>`
             width: 12px;
             height: 12px;
 
-            background: ${props.theme.btn.add.border};
+            background: ${props.theme.btn_add$border};
             mask-image: url(${plus});
         }
 
         &:hover::before {
-            background: ${props.theme.btn.add.hover.plusBg};
+            background: ${props.theme.btn_add_hover$plusBg};
         }
     `}
 `;

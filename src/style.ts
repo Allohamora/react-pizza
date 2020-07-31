@@ -11,103 +11,46 @@ export const breakpoints = {
     md: "600px",
 }
 
+// block__elem_mod$property
 export const theme = {
-    wrap: {
-        bg: "#FFDF8C",
-    },
+    wrap$bg: "#FFDF8C",
 
-    app: {
-        bg: white,
-    },
+    app$bg: white,
 
-    header: {
-        border: "#F7F7F7"
-    },
+    header$border: "#F7F7F7",
 
-    brand: {
-        title: {
-            color: "#181818",
-        },
-        text: {
-            color: "#7B7B7B",
-        }
-    },
+    brand__title$color: "#181818",
+    brand__text$color: "#7B7B7B",
 
-    select: {
-        selected: {
-            color: orange,
-            border: orange
-        },
+    select_selected$color: orange,
+    select_selected$border: orange,
+    select__options$bg: white,
+    select__option_selected$bg: "rgba(254, 95, 30, 0.05)",
+    select__option_selected$color: orange,
 
-        options: {
-            bg: white,
-        },
+    pizzas$color: black,
 
-        option: {
-            selected: {
-                bg: "rgba(254, 95, 30, 0.05)",
-                color: orange,
-            }
-        }
-    },
+    pizza$color: black,
+    pizza__price$color: black,
+    pizza__selector$bg: "#F3F3F3",
+    pizza__option$color: "#2C2C2C",
+    pizza__option_selected$bg: white,
 
-    pizzas: {
-        color: black,
-    },
+    btn_secondary$bg: "#F9F9F9",
+    btn_secondary$color: "#2C2C2C",
+    btn_secondary_active$bg: "#282828",
+    btn_secondary_active$color: white,
 
-    pizza: {
-        color: black,
+    btn_add$color:"#EB5A1E",
+    btn_add$border: "#EB5A1E",
+    btn_add_hover$bg: orange,
+    btn_add_hover$color: white,
+    btn_add_hover$plusBg: white,
 
-        price: {
-            color: black,
-        },
-
-        selector: {
-            bg: "#F3F3F3",
-        },
-
-        option: {
-            color: "#2C2C2C",
-
-            selected: {
-                bg: white,
-            }
-        }
-    },
-
-    btn: {
-        secondary: {
-            bg: "#F9F9F9",
-            color: "#2C2C2C",
-    
-            active: {
-                bg: "#282828",
-                color: white,
-            }
-        },
-
-        add: {
-            color: "#EB5A1E",
-            border: "#EB5A1E",
-
-
-            hover: {
-                bg: orange,
-                color: white,
-                plusBg: white,
-            }
-        },
-
-        cart: {
-            bg: orange,
-            color: white,
-
-            delimiter: {
-                bg: "rgba(255, 255, 255, 0.25)",
-            }
-        }
-    },
-}
+    btn_cart$color: white,
+    btn_cart$bg: orange,
+    btn__delimiter_cart$bg: "rgba(255, 255, 255, 0.25)",
+};
 
 export const GlobalStyles = createGlobalStyle`
     *,

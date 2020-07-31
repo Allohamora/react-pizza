@@ -80,9 +80,9 @@ const Selected = styled.span`
     padding-bottom: 1px;
     margin-left: 8px;
 
-    color: ${props => props.theme.select.selected.color};
+    color: ${props => props.theme.select_selected$color};
 
-    border-bottom: 1px dashed ${props => props.theme.select.selected.border};
+    border-bottom: 1px dashed ${props => props.theme.select_selected$border};
 `;
 
 const Options = styled.div<{show?: boolean}>`
@@ -95,7 +95,7 @@ const Options = styled.div<{show?: boolean}>`
 
     padding: 14px 0;
 
-    background: ${props => props.theme.select.options.bg};
+    background: ${props => props.theme.select__options$bg};
 
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
     
@@ -117,12 +117,12 @@ const Option = styled.button<{selected?: boolean}>`
     line-height: 17px;
 
     &:hover {
-        background: ${props => props.theme.select.option.selected.bg};
+        background: ${props => props.theme.select__option_selected$bg};
     }
 
     ${props => props.selected && `
-        background: ${props.theme.select.option.selected.bg};
-        color: ${props.theme.select.option.selected.color};
+        background: ${props.theme.select__option_selected$bg};
+        color: ${props.theme.select__option_selected$color};
         font-weight: 700;
     `}
 `;
