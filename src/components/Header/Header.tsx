@@ -5,6 +5,7 @@ import { Brand } from 'components/Brand';
 import { Button } from "components/Button";
 import { Link } from 'react-router-dom';
 import { ReactComponent as CartIcon } from "assets/cart.svg";
+import { useHeader } from './useHeader';
 
 interface HeaderProps {};
 
@@ -51,6 +52,9 @@ const Delimiter = styled.div`
 `;
 
 export const Header: React.FC<HeaderProps> = props => {
+
+    const { total, count } = useHeader();
+
     return (
         <Wrap>
             <Container>
@@ -61,10 +65,10 @@ export const Header: React.FC<HeaderProps> = props => {
                     <Link to="/cart">
                         <Button cart >
                             <CartInner>
-                                <span>520 ₽</span>
+                                <span>{total} ₽</span>
                                 <Delimiter />  
                                 <CartIcon />
-                                <span>3</span>
+                                <span>{count}</span>
                             </CartInner>
                         </Button>
                     </Link>

@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CartPizza } from './Cart';
 import { IconButton } from 'components/Button';
 import { breakpoints } from 'style';
+import { CartItem as iItem, createUniqueID } from 'redux/slices/cart';
+import { TYPES } from 'services/api';
+import { useCartItem } from './useCartItem';
 
 interface CartItemProps {
-    pizza: CartPizza
+    pizza: iItem
 };
 
 const Container = styled.div`
@@ -114,7 +116,8 @@ const Second = styled.div`
 
 export const CartItem: React.FC<CartItemProps> = ({ pizza }) => {
 
-    const { id, name, imageUrl, price, size, type } = pizza;
+    const { name, imageUrl, price, size, type, count } = pizza;
+    const { addHandler, removeHandler, clearHandler } = useCartItem( createUniqueID(pizza) );
 
     return (
         <Container>
@@ -125,23 +128,23 @@ export const CartItem: React.FC<CartItemProps> = ({ pizza }) => {
 
                 <Content>
                     <Title>{name}</Title>
-                    <Text>{type} тесто, {size} см.</Text>
+                    <Text>{TYPES[type]} тесто, {size} см.</Text>
                 </Content>
             </First>
 
             <Second>
                 <Count>
-                    <IconButton minus />
-                        2
-                    <IconButton plus />
+                    <IconButton minus onClick={removeHandler} />
+                        {count}
+                    <IconButton plus onClick={addHandler} />
                 </Count>
 
                 <Price>
-                    {price} ₽ 
+                    {price * count} ₽ 
                 </Price>
 
                 <Remove>
-                    <IconButton gray xMark />
+                    <IconButton gray xMark onClick={clearHandler} />
                 </Remove>
             </Second>
 

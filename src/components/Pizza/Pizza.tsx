@@ -90,7 +90,7 @@ const Price = styled.div`
 export const Pizza: React.FC<PizzaProps> = ({ pizza }) => {
 
     const { imageUrl, name, types, sizes, price } = pizza;
-    const { activeType, setActiveType, activeSize, setActiveSize } = usePizza(pizza);
+    const { activeType, setActiveType, activeSize, setActiveSize, addHandler } = usePizza(pizza);
 
     return (
         <PizzaContainer >
@@ -125,7 +125,7 @@ export const Pizza: React.FC<PizzaProps> = ({ pizza }) => {
 
             <Footer>
                 <Price>от {price} ₽</Price>
-                <Button add >
+                <Button add onClick={addHandler} >
                     Добавить
                 </Button>
             </Footer>

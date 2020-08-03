@@ -8,6 +8,7 @@ import { Button } from 'components/Button';
 import { ReactComponent as LeftIcon } from "assets/left.svg";
 import { Link } from 'react-router-dom';
 import { breakpoints } from 'style';
+import { useCart } from './useCart';
 
 interface CartProps {};
 
@@ -131,30 +132,13 @@ const BackInner = styled.div`
     }
 `;
 
-export interface CartPizza {
-    id: number,
-    name: string,
-    imageUrl: string,
-    price: number,
-    size: number,
-    type: string
-}
-
-const pizza = {
-    id: 1,
-    name: "Сырная",
-    imageUrl: "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/2ffc31bb-132c-4c99-b894-53f7107a1441.jpg",
-    price: 245,
-    size: 26,
-    type: "тонкое"
-}
-
-const isEmpty = false;
-
 export const Cart: React.FC<CartProps> = props => {
 
+    const { items, total, count } = useCart();
 
-    if( isEmpty ) {
+
+    // if length === 0
+    if( !items.length ) {
         return (
             <Container>
                 <EmptyCart />
@@ -177,16 +161,20 @@ export const Cart: React.FC<CartProps> = props => {
             </Header>
 
             <div>
-                <CartItem pizza={pizza} />
+                {
+                    items.map( ([id, pizza]) => (
+                        <CartItem key={id} pizza={pizza} />
+                    ) )
+                }
             </div>
 
             <Total>
                 <span>
-                    Всего пиц: <Count>3 шт.</Count>
+                    Всего пиц: <Count>{count} шт.</Count>
                 </span>
 
                 <span>
-                    Сумма заказа: <Sum>900 ₽</Sum>
+                    Сумма заказа: <Sum>{total} ₽</Sum>
                 </span>
             </Total>
 
