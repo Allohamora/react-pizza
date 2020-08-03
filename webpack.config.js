@@ -75,20 +75,20 @@ module.exports = {
                 use: "babel-loader",
             },
             {
-                test: [/\.ts$/, /.tsx$/],
+                test: [/\.ts$/, /\.tsx$/],
                 exclude: /node_modules/,
                 use: "ts-loader"
             },
             {
-                test: /.css$/,
+                test: /\.css$/,
                 loaders: ["style-loader", "css-loader"]
             },
             {
-                test: /.svg$/,
+                test: /\.svg$/,
                 use: ["@svgr/webpack", fileLoader]
             },
             {
-                test: /.(jpe?g|png|gif)$/i,
+                test: /\.(jpe?g|png|gif)$/i,
                 ...fileLoader
             }
         ]
@@ -101,7 +101,7 @@ module.exports = {
         compress: true,
 
         // enables webpack hot
-        hotOnly: true,
+        hot: true,
 
         // overlay in browser
         overlay: true,

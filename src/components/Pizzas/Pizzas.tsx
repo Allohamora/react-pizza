@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { PizzaLoading, PizzaLoadingContainer, Pizza, PizzaContainer } from 'components/Pizza';
-import db from "../../../public/db.json";
+import { usePizzas } from './usePizzas';
 
 interface PizzasProps { };
 
@@ -22,33 +22,33 @@ const Container = styled.div`
     justify-content: space-around;
 
     & > ${PizzaContainer} {
+        padding-left: 4px;
+        padding-right: 4px;
         padding-bottom: 65px;
     }
 
     & > ${PizzaLoadingContainer} {
+        padding-left: 4px;
+        padding-right: 4px;
         padding-bottom: 65px;
     }
 `;
 
 export const Pizzas: React.FC<PizzasProps> = props => {
 
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        setTimeout(setLoading, 1000, false)
-    }, [])
+    const { pizzas } = usePizzas();
 
     return (
         <div>
             <Title>Все пиццы</Title>
             <Container>
                 {
-                    loading
-                        ? new Array(8).fill(null).map((_, i) => (
-                            <PizzaLoading key={i} />
-                        ))
-                        : db.pizzas.map((pizza) => (
+                    pizzas
+                        ? pizzas.map((pizza) => (
                             <Pizza key={pizza.id} pizza={pizza} />
+                         ))
+                        : new Array(8).fill(null).map((_, i) => (
+                            <PizzaLoading key={i} />
                         ))
                 }
             </Container>

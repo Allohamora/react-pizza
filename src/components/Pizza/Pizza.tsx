@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button } from 'components/Button';
-
-interface Pizza {
-    id: number,
-    imageUrl: string,
-    name: string,
-    types: number[],
-    sizes: number[],
-    price: number,
-    category: number,
-    rating: number,
-}
+import { Pizza as iPizza, TYPES } from "services/api";
+import { usePizzas } from 'components/Pizzas/usePizzas';
+import { usePizza } from './usePizza';
 
 interface PizzaProps {
-    pizza: Pizza,
+    pizza: iPizza,
 };
 
 export const PizzaContainer = styled.div`
@@ -95,14 +87,10 @@ const Price = styled.div`
     color: ${props => props.theme.pizza__price$color};
 `;
 
-const TYPES = ["тонкое", "традиционное"];
-
 export const Pizza: React.FC<PizzaProps> = ({ pizza }) => {
 
     const { imageUrl, name, types, sizes, price } = pizza;
-
-    const [activeSize, setActiveSize] = useState(sizes[0]);
-    const [activeType, setActiveType] = useState(types[0]);
+    const { activeType, setActiveType, activeSize, setActiveSize } = usePizza(pizza);
 
     return (
         <PizzaContainer >

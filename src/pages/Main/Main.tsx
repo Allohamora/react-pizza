@@ -4,6 +4,8 @@ import arrow from "assets/arrow.svg";
 import { Button } from 'components/Button';
 import { Pizzas } from 'components/Pizzas';
 import { breakpoints } from 'style';
+import { CATEGORIES } from 'services/api';
+import { useMain } from './useMain';
 
 interface MainProps {};
 
@@ -126,15 +128,14 @@ const PizzasWrap = styled.div`
     margin-top: 32px;
 `;
 
-const categories = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"];
 const sortOptions = ["популярности", "цене", "алфавиту"]
 
 export const Main: React.FC<MainProps> = props => {
 
-    const [show, setShow] = useState(false);
-    const [activeCategory, setActiveCategory] = useState(0);
-    const [activeSort, setActiveSort] = useState(0);
+    const { activeCategory, activeSort, setActiveCategory, setActiveSort } = useMain();
 
+    // sort
+    const [show, setShow] = useState(false);
     const clickHandler = () => setShow(!show);
 
     return (
@@ -142,8 +143,15 @@ export const Main: React.FC<MainProps> = props => {
             <SortBlock>
 
                 <Categories>
+                    <Button
+                        sort
+                        active={"ALL" === activeCategory}
+                        onClick={() => setActiveCategory("ALL")}
+                    >
+                        Все
+                    </Button>
                     {
-                        categories.map((category, i) => (
+                        CATEGORIES.map((category, i) => (
                             <Button
                                 key={i}
                                 sort 

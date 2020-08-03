@@ -3,8 +3,10 @@
   "private": "true",
   "scripts": {
     "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
     "build:analyze": "webpack --mode production --analyze",
     "serve": "serve ./build",
+    "server": "json-server --watch ./public/db.json --port 2020",
     "deploy": "npm run build && npm run serve",
     "start": "webpack-dev-server",
     "test": "jest",
@@ -14,6 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
+    "axios": "^0.19.2",
+    "json-server": "^0.16.1",
     "react": "^16.13.1",
     "react-content-loader": "^5.1.0",
     "react-dom": "^16.13.1",
