@@ -1,20 +1,25 @@
 import { Pizza } from "services/api";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { add } from "redux/slices/cart";
+import { useDispatch, useSelector } from "react-redux";
+import { add, createUniqueID } from "redux/slices/cart";
+import { RootState } from "redux/rootReducer";
 
 export const usePizza = (pizza: Pizza) => {
     const { sizes, types } = pizza;
+    const { id, price, imageUrl, name } = pizza;
 
     const [activeSize, setActiveSize] = useState(sizes[0]);
     const [activeType, setActiveType] = useState(types[0]);
 
     const dispatch = useDispatch();
+    const items = useSelector((state: RootState) => state.cart.items);
+
+    const item = { id, price, imageUrl, name, type: activeType, size: activeSize }
+    const uniqueID = createUniqueID(item);
 
     const addHandler = () => {
-        const { id, price, imageUrl, name } = pizza;
-        dispatch(add({ id, price, imageUrl, name, type: activeType, size: activeSize }))
+        dispatch(add(item))
     };
 
-    return { activeType, setActiveType, activeSize, setActiveSize, addHandler };
+    return { activeType, setActiveType, activeSize, setActiveSize, addHandler, count: items[uniqueID]?.count };
 }

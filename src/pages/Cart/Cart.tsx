@@ -187,7 +187,7 @@ export const Cart: React.FC<CartProps> = props => {
                     </Button>
                 </Link>
 
-                <Button pd1 >Оплатить сейчас</Button>
+                <Button onClick={() => alert("оплата!")} pd1 >Оплатить сейчас</Button>
             </Buttons>
 
         </Container>

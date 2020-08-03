@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import plus from "assets/plus.svg";
+import { Count } from 'components/Pizza';
 
 interface ButtonProps {
     cart?: boolean,
@@ -68,8 +69,29 @@ export const Button = styled.button<ButtonProps>`
     ${props => props.add && `
         border: 1px solid ${props.theme.btn_add$border};
 
+        height: 46px;
+
+        padding: 12px 18px;
+
         color: ${props.theme.btn_add$color};
         background: ${props.theme.btn_add$bg};
+
+        & ${Count} {
+            font-weight: 700;
+            font-size: 13px;
+
+            border-radius: 50%;
+
+            color: #FFFFFF;
+            background-color: #EB5A1E;
+
+            padding: 3px 7px;
+        }
+
+        &:hover ${Count} {
+            background-color: #FFFFFF;
+            color: #EB5A1E;
+        }
 
         &:hover {
             background: ${props.theme.btn_add_hover$bg};
@@ -77,6 +99,7 @@ export const Button = styled.button<ButtonProps>`
 
             opacity: 1;
         }
+        
 
         &::before {
             content: "";

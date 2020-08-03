@@ -31,7 +31,7 @@ const initialState: InitialState = {
 
 const recalculate = (state: InitialState) => {
     const values = Object.values(state.items);
-    state.count = values.length;
+    state.count = values.reduce((acum, cur) => acum + cur.count, 0);
     state.total = values.reduce((acum, cur) => acum + cur.price * cur.count, 0);
 }
 
@@ -51,10 +51,17 @@ export const cartSlice = createSlice({
 
             if( typeof payload === "string" ) {
                 const item = state.items[payload];
-                item.count += 1;
+                item.count++;
             } else {
                 const uniqueID = createUniqueID(payload);
-                state.items[uniqueID] = {...payload, count: 1};
+                const item = state.items[uniqueID];
+
+                if( !item ) {
+                    state.items[uniqueID] = {...payload, count: 1};
+                } else {
+                    item.count++;
+                }
+                
             }
 
             recalculate(state);

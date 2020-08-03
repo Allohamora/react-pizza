@@ -87,10 +87,18 @@ const Price = styled.div`
     color: ${props => props.theme.pizza__price$color};
 `;
 
+export const Count = styled.span<{show?: boolean}>`
+    display: none;
+
+    ${props => props.show && `
+        display: inline-block;
+    `}
+`;
+
 export const Pizza: React.FC<PizzaProps> = ({ pizza }) => {
 
     const { imageUrl, name, types, sizes, price } = pizza;
-    const { activeType, setActiveType, activeSize, setActiveSize, addHandler } = usePizza(pizza);
+    const { activeType, setActiveType, activeSize, setActiveSize, addHandler, count } = usePizza(pizza);
 
     return (
         <PizzaContainer >
@@ -126,7 +134,7 @@ export const Pizza: React.FC<PizzaProps> = ({ pizza }) => {
             <Footer>
                 <Price>от {price} ₽</Price>
                 <Button add onClick={addHandler} >
-                    Добавить
+                    Добавить <Count show={!!count} >{count}</Count>
                 </Button>
             </Footer>
 

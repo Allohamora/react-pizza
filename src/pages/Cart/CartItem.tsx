@@ -93,9 +93,13 @@ const Remove = styled.div`
 const First = styled.div`
     flex-grow: 1;
 
+    max-width: 50%;
+
     display: flex;
 
     @media( max-width: ${breakpoints.cartPizza} ) {
+        max-width: 100%;
+
         margin-bottom: 20px;
 
         & ${Content} {
