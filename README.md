@@ -10,13 +10,13 @@
 ### Commands
 
 * npm run start - start webpack-dev-server
-* npm run serve - start server in build dir
+* npm run serve - start frontend server in build dir
 
 * npm run build - create prod build
 * npm run build:dev - create development build
 * npm run build:analyze - create prod build with webpack-bundle-analyzer
 
-* npm run deploy - create prod build and start server
+* npm run deploy - create prod build and start server with frontend server
 
 * npm run test - start jest test
 * npm run test:watch - start jest test with watch param
