@@ -2,6 +2,13 @@
 
 ## Use: typescript, react, react-router-dom, react-content-loader, styled-components, redux, @reduxjs/toolkit, axios, json-server.
 
+### Instruction
+
+1. npm run server
+2. npm run start
+
+### Commands
+
 * npm run start - start webpack-dev-server
 * npm run serve - start server in build dir
 
@@ -14,4 +21,4 @@
 * npm run test - start jest test
 * npm run test:watch - start jest test with watch param
 
-### [Design](https://www.figma.com/file/wWUnQwvRDWBfPx1v1pCAfO/React-Pizza?node-id=0%3A1)
+#### [Design](https://www.figma.com/file/wWUnQwvRDWBfPx1v1pCAfO/React-Pizza?node-id=0%3A1)

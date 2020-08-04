@@ -66,15 +66,15 @@ export const Button = styled.button<ButtonProps>`
         background: ${props.theme.btn_cart$bg};
     `}
 
-    ${props => props.add && `
-        border: 1px solid ${props.theme.btn_add$border};
+    ${({ add, theme }) => add && `
+        border: 1px solid ${theme.btn_add$border};
 
         height: 46px;
 
         padding: 12px 18px;
 
-        color: ${props.theme.btn_add$color};
-        background: ${props.theme.btn_add$bg};
+        color: ${theme.btn_add$color};
+        background: ${theme.btn_add$bg};
 
         & ${Count} {
             font-weight: 700;
@@ -82,20 +82,20 @@ export const Button = styled.button<ButtonProps>`
 
             border-radius: 50%;
 
-            color: #FFFFFF;
-            background-color: #EB5A1E;
+            color: ${theme.btn_add__count$color};
+            background-color: ${theme.btn_add__count$bg};
 
             padding: 3px 7px;
         }
 
         &:hover ${Count} {
-            background-color: #FFFFFF;
-            color: #EB5A1E;
+            background-color: ${theme.btn_add__count_hover$bg};
+            color: ${theme.btn_add__count_hover$color};
         }
 
         &:hover {
-            background: ${props.theme.btn_add_hover$bg};
-            color: ${props.theme.btn_add_hover$color};
+            background: ${theme.btn_add_hover$bg};
+            color: ${theme.btn_add_hover$color};
 
             opacity: 1;
         }
@@ -111,12 +111,12 @@ export const Button = styled.button<ButtonProps>`
             width: 12px;
             height: 12px;
 
-            background: ${props.theme.btn_add$border};
+            background: ${theme.btn_add$border};
             mask-image: url(${plus});
         }
 
         &:hover::before {
-            background: ${props.theme.btn_add_hover$plusBg};
+            background: ${theme.btn_add_hover$plusBg};
         }
     `}
 `;

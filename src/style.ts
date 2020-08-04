@@ -60,6 +60,11 @@ export const theme = {
     btn_add_hover$color: white,
     btn_add_hover$plusBg: white,
 
+    btn_add__count$color: white,
+    btn_add__count$bg: "#EB5A1E",
+    btn_add__count_hover$color: "#EB5A1E",
+    btn_add__count_hover$bg: white,
+
     btn_cart$color: white,
     btn_cart$bg: orange,
     btn__delimiter_cart$bg: "rgba(255, 255, 255, 0.25)",
