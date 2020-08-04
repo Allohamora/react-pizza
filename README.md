@@ -11,6 +11,7 @@
 
 * npm run start - start webpack-dev-server
 * npm run serve - start frontend server in build dir
+* npm run server - start json-server with db.json
 
 * npm run build - create prod build
 * npm run build:dev - create development build
