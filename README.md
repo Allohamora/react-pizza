@@ -4,8 +4,15 @@
 
 ### Instruction
 
+#### Without docker
+
 1. npm run server
 2. npm run start
+
+#### With docker
+
+1. docker-compose build
+2. docker-compose up
 
 ### Commands
 

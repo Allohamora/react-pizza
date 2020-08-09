@@ -1,0 +1,13 @@
+node_modules
+node_modules/
+
+__test__
+__test__/
+
+build
+build/
+
+.git
+.git/
+
+.gitignore
