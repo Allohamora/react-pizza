@@ -121,7 +121,7 @@ const Second = styled.div`
 export const CartItem: React.FC<CartItemProps> = ({ pizza }) => {
 
     const { name, imageUrl, price, size, type, count } = pizza;
-    const { addHandler, removeHandler, clearHandler } = useCartItem( createUniqueID(pizza) );
+    const { addHandler, removeHandler, deleteHandler } = useCartItem( createUniqueID(pizza) );
 
     return (
         <Container>
@@ -148,7 +148,7 @@ export const CartItem: React.FC<CartItemProps> = ({ pizza }) => {
                 </Price>
 
                 <Remove>
-                    <IconButton gray xMark onClick={clearHandler} />
+                    <IconButton gray xMark onClick={deleteHandler} />
                 </Remove>
             </Second>
 

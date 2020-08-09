@@ -1,4 +1,4 @@
-import { add, remove, clear } from "redux/slices/cart";
+import { add, remove, deleteAction } from "redux/slices/cart";
 import { useDispatch } from "react-redux";
 
 export const useCartItem = (id: string) => {
@@ -12,9 +12,9 @@ export const useCartItem = (id: string) => {
         dispatch(remove(id))
     }
 
-    const clearHandler = () => {
-        dispatch(clear(id));
+    const deleteHandler = () => {
+        dispatch(deleteAction(id));
     }
 
-    return { addHandler, clearHandler, removeHandler };
+    return { addHandler, deleteHandler, removeHandler };
 };

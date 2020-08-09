@@ -15,7 +15,7 @@ const initialState: InitialState = {
     activeSort: 0,
 }
 
-const sortHandlers = [
+export const sortHandlers = [
     // sort by rating
     (a: Pizza, b: Pizza) => b.rating - a.rating,
 
@@ -32,7 +32,9 @@ export const pizzaSlice = createSlice({
     reducers: {
         setPizzas: (state, action: { payload: Pizzas }) => {
             state.pizzas = action.payload;
-            state.sorted = action.payload.sort(sortHandlers[state.activeSort]);
+            // if action.payload instead [...action.payload] typeError in tests
+            state.sorted = [...action.payload].sort(sortHandlers[state.activeSort]);
+
             return state;
         },
         allCategory: state => {

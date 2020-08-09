@@ -82,7 +82,7 @@ export const cartSlice = createSlice({
 
             return state;
         },
-        clear: (state, action: { payload: string }) => {
+        deleteAction: (state, action: { payload: string }) => {
             const { payload } = action;
             
             delete state.items[payload];
@@ -94,4 +94,4 @@ export const cartSlice = createSlice({
     }
 });
 
-export const { add, remove, clear } = cartSlice.actions; 
+export const { add, remove, deleteAction } = cartSlice.actions; 
