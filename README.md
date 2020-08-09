@@ -2,17 +2,19 @@
 
 ## Use: typescript, react, react-router-dom, react-content-loader, styled-components, redux, @reduxjs/toolkit, axios, json-server.
 
-### Instruction
-
-#### Without docker
+### Development:
 
 1. npm run server
 2. npm run start
 
-#### With docker
+### Deploy:
 
-1. docker-compose build
-2. docker-compose up
+* Classic
+    1. npm run deploy
+
+* Docker:
+    1. docker-compose build
+    2. docker-compose up
 
 ### Commands
 
