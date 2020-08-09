@@ -10,11 +10,11 @@
 ### Deploy:
 
 * Classic
-    1. npm run deploy
+    * npm run deploy
 
 * Docker:
-    1. docker-compose build
-    2. docker-compose up
+    * docker-compose build
+    * docker-compose up
 
 ### Commands
 
