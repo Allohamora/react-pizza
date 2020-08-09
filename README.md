@@ -9,7 +9,7 @@
 
 ### Deploy:
 
-* Classic
+* Classic:
     * npm run deploy
 
 * Docker:
