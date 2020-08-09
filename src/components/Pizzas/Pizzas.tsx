@@ -21,16 +21,11 @@ const Container = styled.div`
 
     justify-content: space-around;
 
-    & > ${PizzaContainer} {
-        padding-left: 4px;
-        padding-right: 4px;
-        padding-bottom: 65px;
-    }
-
-    & > ${PizzaLoadingContainer} {
-        padding-left: 4px;
-        padding-right: 4px;
-        padding-bottom: 65px;
+    & > ${PizzaContainer}, 
+    & > svg {
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-bottom: 65px;
     }
 `;
 

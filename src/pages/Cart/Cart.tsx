@@ -134,7 +134,7 @@ const BackInner = styled.div`
 
 export const Cart: React.FC<CartProps> = props => {
 
-    const { items, total, count } = useCart();
+    const { items, total, count, clearHandler } = useCart();
 
 
     // if length === 0
@@ -154,7 +154,7 @@ export const Cart: React.FC<CartProps> = props => {
                 </CartBlock>
 
                 <span>
-                    <ClearButton>
+                    <ClearButton onClick={clearHandler} >
                         <TrashIcon /> Очистить корзину
                     </ClearButton>
                 </span>

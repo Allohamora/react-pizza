@@ -90,8 +90,14 @@ export const cartSlice = createSlice({
             recalculate(state);
 
             return state;
+        },
+        clear: state => {
+            state.items = {};
+            recalculate(state);
+
+            return state;
         }
     }
 });
 
-export const { add, remove, deleteAction } = cartSlice.actions; 
+export const { add, remove, clear, deleteAction } = cartSlice.actions; 

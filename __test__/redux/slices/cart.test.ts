@@ -1,4 +1,4 @@
-import { add, remove, deleteAction, createUniqueID, cartSlice } from "../../../src/redux/slices/cart";
+import { add, remove, clear, deleteAction, createUniqueID, cartSlice } from "../../../src/redux/slices/cart";
 import { createStore } from "redux";
 
 const pizza = {
@@ -96,4 +96,19 @@ describe("cartSlice", () => {
         const cartAfter = store.getState();
         expect( cartAfter.items[id].count ).toBe(1);
     });
+
+    it("clear action clear cart state", () => {
+        store.dispatch( add(pizza) );
+        store.dispatch( add(pizza2) );
+
+        const cartBefore = store.getState();
+        expect( Object.keys(cartBefore.items) ).toHaveLength(2);
+        expect( cartBefore.count ).toBe(2);
+
+        store.dispatch(clear());
+
+        const cartAfter = store.getState();
+        expect( Object.keys(cartAfter.items) ).toHaveLength(0);
+        expect( cartAfter.count ).toBe(0);
+    })
 })
