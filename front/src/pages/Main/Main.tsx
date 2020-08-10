@@ -12,18 +12,27 @@ interface MainProps {};
 const Categories = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    align-items: center;
+
+    & > ${Button} {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 
     & > ${Button}:not(:last-child) {
         margin-right: 10px;
-        margin-bottom: 10px;
     }
 
     @media (max-width: ${breakpoints.md}) {
         flex-direction: column;
+        align-items: normal;
 
         & > ${Button} {
-            margin-right: 0;
+            flex-grow: 1;
+
+            margin-right: 0 !important;
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
     }
 `;

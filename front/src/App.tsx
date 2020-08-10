@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Header } from 'components/Header';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import { Container } from 'containers/Container';
+import { breakpoints } from 'style';
 
 const Cart = React.lazy(() => import("pages/Cart"));
 const Main = React.lazy(() => import("pages/Main"));
@@ -14,6 +15,10 @@ const Wrap = styled.div`
     margin: 0 auto;
 
     background-color: ${props => props.theme.wrap$bg};
+
+    @media (max-width: ${breakpoints.md}) {
+        padding: 25px 0;
+    }
 `;
 
 const AppContainer = styled.div`
@@ -29,6 +34,10 @@ const AppContainer = styled.div`
     min-height: 100vh;
 
     margin: 0 auto;
+
+    @media (max-width: ${breakpoints.md}) {
+        width: calc(100vw - 50px);
+    }
 `;
 
 const Content = styled(Container)`
