@@ -1,4 +1,4 @@
-import { add, remove, clear, deleteAction, createUniqueID, cartSlice } from "../../../src/redux/slices/cart";
+import { add, remove, clear, deleteAction, createUniqueID, cartSlice } from "redux/slices/cart";
 import { createStore } from "redux";
 
 const pizza = {

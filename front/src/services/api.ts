@@ -19,7 +19,7 @@ interface Api {
     getPizzas: () => Promise<Pizzas>
 }
 
-class JsonServerApi implements Api {
+export class JsonServerApi implements Api {
     private baseUrl: string = "http://localhost:2020"
 
     public async getPizzas(){
@@ -29,7 +29,7 @@ class JsonServerApi implements Api {
     }
 }
 
-class MyApi implements Api {
+export class BackEndApi implements Api {
     public async getPizzas(){
         const response = await axios.get("/pizzas");
         const data: Pizzas = response.data;
@@ -38,4 +38,4 @@ class MyApi implements Api {
 }
 
 // if you need work with json-server please change it.
-export const api = new MyApi();
+export const api = new BackEndApi();

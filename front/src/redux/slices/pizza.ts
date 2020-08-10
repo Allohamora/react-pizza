@@ -8,7 +8,7 @@ interface InitialState {
     activeSort: number,
 }
 
-const initialState: InitialState = {
+export const initialState: InitialState = {
     pizzas: null,
     sorted: null,
     activeCategory: "ALL",
@@ -31,24 +31,28 @@ export const pizzaSlice = createSlice({
     initialState,
     reducers: {
         setPizzas: (state, action: { payload: Pizzas }) => {
-            state.pizzas = action.payload;
             // if action.payload instead [...action.payload] typeError in tests
+            state.pizzas = [...action.payload];
             state.sorted = [...action.payload].sort(sortHandlers[state.activeSort]);
 
             return state;
         },
         allCategory: state => {
-            state.sorted = state.pizzas;
+            state.sorted = [...state.pizzas].sort(sortHandlers[state.activeSort]);
+            
             state.activeCategory = "ALL";
             return state;
         },
         byCategory: (state, action: { payload: number }) => {
-            state.sorted = state.pizzas.filter(pizza => pizza.category === action.payload);
+            state.sorted = [...state.pizzas]
+                                            .filter(pizza => pizza.category === action.payload)
+                                            .sort(sortHandlers[state.activeSort]);
+
             state.activeCategory = action.payload;
             return state
         },
         sort: (state, action: { payload: number }) => {
-            state.sorted = state.sorted.sort(sortHandlers[action.payload]);
+            state.sorted = [...state.sorted].sort(sortHandlers[action.payload]);
             state.activeSort = action.payload;
             return state;
         }

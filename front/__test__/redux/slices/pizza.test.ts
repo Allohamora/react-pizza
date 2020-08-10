@@ -1,5 +1,7 @@
-import { setPizzas, allCategory, byCategory, sort, pizzaSlice, sortHandlers } from "../../../src/redux/slices/pizza";
+import { setPizzas, allCategory, byCategory, sort, pizzaSlice, sortHandlers, initialState } from "redux/slices/pizza";
 import { createStore } from "redux";
+
+const { activeSort } = initialState;
 
 const pizzas = [
     {
@@ -61,7 +63,7 @@ describe("pizzaSlice", () => {
         const pizzaAfter = store.getState();
 
         expect( pizzaAfter.pizzas ).toEqual(pizzas);
-        expect( pizzaAfter.sorted ).toEqual([...pizzas].sort(sortHandlers[0]));
+        expect( pizzaAfter.sorted ).toEqual([...pizzas].sort(sortHandlers[activeSort]));
     });
 
     it("byCategory(0) setActiveCategory to 0 and sort pizzas", () => {
@@ -86,7 +88,7 @@ describe("pizzaSlice", () => {
         const pizzaAfter = store.getState();
         expect(pizzaAfter.activeCategory).toBe("ALL");
         expect(pizzaAfter.pizzas).toEqual(pizzas);
-        expect(pizzaAfter.sorted).toEqual(pizzas);
+        expect(pizzaAfter.sorted).toEqual(pizzas.sort(sortHandlers[activeSort]));
     });
 
     it("sort(1) setActiveSort = 1 and sort pizzas by price", () => {
