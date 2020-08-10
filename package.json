@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Allohamora/react-pizza.git"
+    "url": "git+https://github.com/Allohamora/ts-react-pizza.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Allohamora/react-pizza/issues"
+    "url": "https://github.com/Allohamora/ts-react-pizza/issues"
   },
-  "homepage": "https://github.com/Allohamora/react-pizza#readme"
+  "homepage": "https://github.com/Allohamora/ts-react-pizza#readme"
 }

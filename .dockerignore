@@ -1,21 +1,13 @@
-node_modules
-node_modules/
+**/node_modules
+**/node_modules/
 
-back/node_modules
-front/node_modules
-back/node_modules/
-front/node_modules/
+**/__test__
+**/__test__/
 
-__test__
-__test__/
+**/build
+**/build/
 
-front/__test__
-front/__test__/
+**/.git
+**/.git/
 
-build
-build/
-
-.git
-.git/
-
-.gitignore
+**/.gitignore

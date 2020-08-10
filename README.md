@@ -1,8 +1,11 @@
 # My version of [react pizza](https://github.com/Archakov06/react-pizza)
 
-## Front-end: typescript, react, react-router-dom, react-content-loader, styled-components, redux, @reduxjs/toolkit, axios, json-server(for dev), webpack, webpack-eco(loaders), babel.
+### Hosted on heroku: https://ts-react-pizza.herokuapp.com (can loading few minutes)
 
-### Back-end: typescript, ts-node, express.
+## Front-end: typescript, react, react-router-dom, react-content-loader, styled-components, redux, @reduxjs/toolkit, axios.
+## For dev: json-server, webpack(custom config), babel.
+
+## Back-end: typescript, ts-node, express.
 
 ### Deploy:
 
@@ -10,8 +13,12 @@
     * npm run start
 
 * Docker:
-    * docker-compose build
-    * docker-compose up
+    * with docker-compose:
+        * docker-compose build
+        * docker-compose up
+    * without:
+        * docker build . -t ts-react-pizza
+        * docker run -p 3000:3000 ts-react-pizza
 
 ### Commands:
 
