@@ -1,34 +1,24 @@
 # My version of [react pizza](https://github.com/Archakov06/react-pizza)
 
-## Use: typescript, react, react-router-dom, react-content-loader, styled-components, redux, @reduxjs/toolkit, axios, json-server.
+## Front-end: typescript, react, react-router-dom, react-content-loader, styled-components, redux, @reduxjs/toolkit, axios, json-server(for dev), webpack, webpack-eco(loaders), babel.
 
-### Development:
-
-1. npm run server
-2. npm run start
+### Back-end: typescript, ts-node, express.
 
 ### Deploy:
 
 * Classic:
-    * npm run deploy
+    * npm run start
 
 * Docker:
     * docker-compose build
     * docker-compose up
 
-### Commands
+### Commands:
 
-* npm run start - start webpack-dev-server
-* npm run serve - start frontend server in build dir
-* npm run server - start json-server with db.json
-
-* npm run build - create prod build
-* npm run build:dev - create development build
-* npm run build:analyze - create prod build with webpack-bundle-analyzer
-
-* npm run deploy - create prod build and start server with frontend server
-
-* npm run test - start jest test
-* npm run test:watch - start jest test with watch param
+* npm run start - create build and start server with install dependencies.
+* npm run build - install dependencies and create front-end build.
+* npm run build:without - create front-end build without install dependencies.
+* npm run server - install dependencies and start server with front-end build.
+* npm run server:without - start server without install dependencies.
 
 #### [Design](https://www.figma.com/file/wWUnQwvRDWBfPx1v1pCAfO/React-Pizza?node-id=0%3A1)

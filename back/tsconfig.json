@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "module": "commonJS",
+        "allowJs": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true
+    },
+    "exclude": ["node_modules"],
+    "include": ["src"]
+}

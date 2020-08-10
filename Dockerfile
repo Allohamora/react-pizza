@@ -3,8 +3,8 @@ WORKDIR /app
 
 COPY . ./
 
-RUN npm i && npm i -D && npm run build
+RUN npm run build && cd ./back && npm i && npm i -D
 
-CMD npm run serve
+CMD npm run server:without
 
-EXPOSE 5000
+EXPOSE 3000

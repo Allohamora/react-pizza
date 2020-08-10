@@ -23,8 +23,10 @@ const mode = argv.find((arg, i) => {
 const isProduction = mode === "production" ? true : false;
 const isAnalyze = argv.find(arg => arg === "--analyze") ? true : false;
 
+const buildPath = path.join(__dirname, "./build");
+
 // delete build dir
-isProduction && fs.rmdirSync(path.join(__dirname, "./build"), { recursive: true });
+isProduction && fs.existsSync( buildPath ) && fs.rmdirSync(buildPath, { recursive: true });
 
 const getPlugins = () => {
     const plugins = [

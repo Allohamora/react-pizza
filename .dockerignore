@@ -1,8 +1,16 @@
 node_modules
 node_modules/
 
+back/node_modules
+front/node_modules
+back/node_modules/
+front/node_modules/
+
 __test__
 __test__/
+
+front/__test__
+front/__test__/
 
 build
 build/

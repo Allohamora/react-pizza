@@ -5,11 +5,4 @@ services:
         build: 
             context: .
         ports: 
-            - 5000:5000
-    json-server:
-        image: clue/json-server
-        volumes: 
-            - ./public/db.json:/data/db.json
-        ports: 
-            - 2020:80
-        restart: always
+            - 3000:3000

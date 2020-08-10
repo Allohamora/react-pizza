@@ -29,4 +29,13 @@ class JsonServerApi implements Api {
     }
 }
 
-export const api = new JsonServerApi();
+class MyApi implements Api {
+    public async getPizzas(){
+        const response = await axios.get("/pizzas");
+        const data: Pizzas = response.data;
+        return data;
+    }
+}
+
+// if you need work with json-server please change it.
+export const api = new MyApi();
