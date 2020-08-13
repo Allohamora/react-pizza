@@ -3,6 +3,7 @@
         "module": "esnext",
         "target": "es5",
         "jsx": "react",
+        "sourceMap": true,
         "baseUrl": "./src",
         "moduleResolution": "node",
         "resolveJsonModule": true,

@@ -2,9 +2,9 @@
   "name": "ts-react-pizza",
   "private": true,
   "scripts": {
-    "build": "cd ./front && npm i && npm i -D && npm run build",
+    "build": "cd ./front && npm i -D && npm run build",
     "build:without": "cd ./front && npm run build",
-    "server": "cd ./back && npm i && npm i -D && npm run start",
+    "server": "cd ./back && npm i -D && npm run start",
     "server:without": "cd ./back && npm run start",
     "start": "npm run build && npm run server"
   },

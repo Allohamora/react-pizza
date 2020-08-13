@@ -37,5 +37,5 @@ export class BackEndApi implements Api {
     }
 }
 
-// if you need work with json-server please change it.
-export const api = new BackEndApi();
+// if this is production build => BackEndApi, if this development build => JsonServerApi
+export const api = process.env.NODE_ENV !== "production" ? new JsonServerApi() : new BackEndApi();

@@ -1,16 +1,17 @@
 const path = require("path");
-const fs = require("fs");
 
 // analyzer
-const WebpackBundleAnalizer = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 // ts baseURL
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 // binding with index.html
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // optimization (minify+)
 const TerserPlugin = require("terser-webpack-plugin");
+// cleans build dir.
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-const argv = process.argv;
+const { argv } = process;
 // get --mode param
 const mode = argv.find((arg, i) => {
     const prev = argv[i - 1];
@@ -23,22 +24,18 @@ const mode = argv.find((arg, i) => {
 const isProduction = mode === "production" ? true : false;
 const isAnalyze = argv.find(arg => arg === "--analyze") ? true : false;
 
-const buildPath = path.join(__dirname, "./build");
-
-// delete build dir
-isProduction && fs.existsSync( buildPath ) && fs.rmdirSync(buildPath, { recursive: true });
-
 const getPlugins = () => {
     const plugins = [
         new HtmlWebpackPlugin({ 
             template: path.join(__dirname, "./public/index.html"),
             favicon: path.join(__dirname, "./public/logo.ico"),
             minify: isProduction,
-        })
+        }),
+        new CleanWebpackPlugin()
     ];
 
     if( isAnalyze ) {
-        plugins.push(new WebpackBundleAnalizer());
+        plugins.push(new BundleAnalyzerPlugin());
     }
 
     return plugins;
@@ -58,6 +55,15 @@ module.exports = {
         path: path.resolve(__dirname, "./build"),
         filename: isProduction ? "[contenthash:8].js" : "[name].js",
         chunkFilename: isProduction ? "[contenthash:8].chunk.js" : "[name].chunk.js"
+    },
+
+    // if production => delete source map, if development => save sourcemap
+    devtool: isProduction ? false : "inline-source-map",
+
+    // increase max size to 512kb
+    performance: {
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
     },
     optimization: {
         minimize: isProduction,

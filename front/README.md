@@ -2,9 +2,8 @@
 
 ### Development:
 
-1. change api in ./src/services/api.ts from MyApi to JsonServerApi.
-2. npm run json-server
-3. npm run start
+1. npm run json-server
+2. npm run start
 
 ### Commands
 
