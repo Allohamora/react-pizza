@@ -26,34 +26,51 @@ export const sortHandlers = [
     (a: Pizza, b: Pizza) => a.name.localeCompare(b.name)
 ]
 
+const filterPizzas = (pizzas: InitialState["pizzas"], category: InitialState["activeCategory"]) => {
+    if( category === "ALL" ) return pizzas;
+
+    return pizzas.filter( pizza => pizza.category === category );
+}
+
+const sortPizzas = (pizzas: InitialState["pizzas"], sort: InitialState["activeSort"]) => {
+    // sort mutating array
+    return [...pizzas].sort(sortHandlers[sort]);
+}
+
 export const pizzaSlice = createSlice({
     name: "pizza",
     initialState,
     reducers: {
         setPizzas: (state, action: { payload: Pizzas }) => {
-            // if action.payload instead [...action.payload] typeError in tests
-            state.pizzas = [...action.payload];
-            state.sorted = [...action.payload].sort(sortHandlers[state.activeSort]);
+            const { payload } = action;
+            const { activeCategory, activeSort } = state;
 
+            state.pizzas = payload;
+            state.sorted = sortPizzas( filterPizzas(payload, activeCategory), activeSort );
+            
             return state;
         },
         allCategory: state => {
-            state.sorted = [...state.pizzas].sort(sortHandlers[state.activeSort]);
-            
+            state.sorted = sortPizzas( state.pizzas, state.activeSort );
             state.activeCategory = "ALL";
+
             return state;
         },
         byCategory: (state, action: { payload: number }) => {
-            state.sorted = [...state.pizzas]
-                                            .filter(pizza => pizza.category === action.payload)
-                                            .sort(sortHandlers[state.activeSort]);
+            const { pizzas, activeSort } = state;
 
+            // filter by category, and sort by activeSort
+            state.sorted = sortPizzas( filterPizzas( pizzas, action.payload ), activeSort );
             state.activeCategory = action.payload;
+
             return state
         },
         sort: (state, action: { payload: number }) => {
-            state.sorted = [...state.sorted].sort(sortHandlers[action.payload]);
+            const { sorted } = state;
+
+            state.sorted = sortPizzas(sorted, action.payload);
             state.activeSort = action.payload;
+
             return state;
         }
     }

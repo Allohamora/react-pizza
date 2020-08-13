@@ -35,7 +35,7 @@ const recalculate = (state: InitialState) => {
     state.total = values.reduce((acum, cur) => acum + cur.price * cur.count, 0);
 }
 
-export const createUniqueID = (item: Item) => {
+export const createPizzaId = (item: Item) => {
     const { id, size, type } = item;
     const uniqueID = `${id}_${size}_${type}`;
 
@@ -49,15 +49,17 @@ export const cartSlice = createSlice({
         add: (state, action: { payload: string | Item, }) => {
             const { payload } = action;
 
+            // if add by id
             if( typeof payload === "string" ) {
                 const item = state.items[payload];
                 item.count++;
             } else {
-                const uniqueID = createUniqueID(payload);
-                const item = state.items[uniqueID];
+                // if add without id
+                const pizzaId = createPizzaId(payload);
+                const item = state.items[pizzaId];
 
                 if( !item ) {
-                    state.items[uniqueID] = {...payload, count: 1};
+                    state.items[pizzaId] = {...payload, count: 1};
                 } else {
                     item.count++;
                 }
@@ -72,11 +74,9 @@ export const cartSlice = createSlice({
 
             const item = state.items[payload];
 
+            if( item.count === 1 ) return state;
+
             item.count -= 1;
-            
-            if( !item.count ) {
-                delete state.items[payload]
-            }
 
             recalculate(state);
 

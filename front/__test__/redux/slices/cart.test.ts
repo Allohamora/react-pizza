@@ -1,4 +1,4 @@
-import { add, remove, clear, deleteAction, createUniqueID, cartSlice } from "redux/slices/cart";
+import { add, remove, clear, deleteAction, createPizzaId, cartSlice } from "redux/slices/cart";
 import { createStore } from "redux";
 
 const pizza = {
@@ -33,7 +33,7 @@ describe("cartSlice", () => {
         expect(cart.count).toBe(0);
     });
 
-    it("add action add item to cart", () => {
+    it("add(pizza): add pizza to cart", () => {
         store.dispatch( add(pizza) );
 
         const cart = store.getState();
@@ -43,7 +43,7 @@ describe("cartSlice", () => {
         expect( Object.keys(cart.items) ).toHaveLength(1);
     });
 
-    it("if added already in cart, him count++", () => {
+    it("if pizza already in cart, her count++", () => {
         store.dispatch( add(pizza) );
         store.dispatch( add(pizza) );
 
@@ -54,7 +54,7 @@ describe("cartSlice", () => {
         expect( Object.keys(cart.items) ).toHaveLength(1);
     });
 
-    it("if add different pizzas, created two different items in cart", () => {
+    it("if added different pizzas, created two different pizzaId in cart", () => {
         store.dispatch( add(pizza) );
         store.dispatch( add(pizza2) );
 
@@ -65,7 +65,7 @@ describe("cartSlice", () => {
         expect( Object.keys(cart.items) ).toHaveLength(2);
     });
 
-    it("deleteAction delete all pizzas with /uniqueId/ from cart", () => {
+    it("delete(pizzaId): delete pizza by id from cart", () => {
         store.dispatch( add(pizza) );
         store.dispatch( add(pizza2) );
 
@@ -74,7 +74,7 @@ describe("cartSlice", () => {
         expect( cartBefore.count ).toBe(2);
         expect( Object.keys(cartBefore.items) ).toHaveLength(2);
 
-        store.dispatch( deleteAction( createUniqueID(pizza) ) );
+        store.dispatch( deleteAction( createPizzaId(pizza) ) );
 
         const cartAfter = store.getState();
 
@@ -82,22 +82,38 @@ describe("cartSlice", () => {
         expect( Object.keys(cartAfter.items) ).toHaveLength(1);
     });
 
-    it("remove action remove one pizza from cart", () => {
+    it("remove(pizzaId): remove one pizza from cart", () => {
         store.dispatch( add(pizza) );
         store.dispatch( add(pizza) );
 
-        const id = createUniqueID(pizza);
+        const id = createPizzaId(pizza);
 
         const cartBefore = store.getState();
         expect( cartBefore.items[id].count ).toBe(2);
 
-        store.dispatch( remove(createUniqueID(pizza)) );
+        store.dispatch( remove(id) );
 
         const cartAfter = store.getState();
         expect( cartAfter.items[id].count ).toBe(1);
     });
 
-    it("clear action clear cart state", () => {
+    it("remove(pizzaId): if pizzaId contains 1 pizza, remove don't work", () => {
+        store.dispatch( add(pizza) );
+        store.dispatch( add(pizza) );
+
+        const id = createPizzaId(pizza);
+
+        const cartBefore = store.getState();
+        expect( cartBefore.items[id].count ).toBe(2);
+
+        store.dispatch(remove(id));
+        store.dispatch(remove(id));
+
+        const cartAfter = store.getState();
+        expect( cartAfter.items[id].count ).toBe(1);
+    })
+
+    it("clear(): change cart state to initial", () => {
         store.dispatch( add(pizza) );
         store.dispatch( add(pizza2) );
 

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { IconButton } from 'components/Button';
 import { breakpoints } from 'style';
-import { CartItem as iItem, createUniqueID } from 'redux/slices/cart';
+import { CartItem as iItem, createPizzaId } from 'redux/slices/cart';
 import { TYPES } from 'services/api';
 import { useCartItem } from './useCartItem';
 
@@ -121,7 +121,7 @@ const Second = styled.div`
 export const CartItem: React.FC<CartItemProps> = ({ pizza }) => {
 
     const { name, imageUrl, price, size, type, count } = pizza;
-    const { addHandler, removeHandler, deleteHandler } = useCartItem( createUniqueID(pizza) );
+    const { addHandler, removeHandler, deleteHandler } = useCartItem( createPizzaId(pizza) );
 
     return (
         <Container>
