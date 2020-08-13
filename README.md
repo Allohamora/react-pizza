@@ -17,7 +17,7 @@
         * docker-compose build
         * docker-compose up
     * without:
-        * docker build . -t ts-react-pizza
+        * docker build -t ts-react-pizza . 
         * docker run -p 3000:3000 ts-react-pizza
 
 ### Commands:
